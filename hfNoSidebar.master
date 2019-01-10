@@ -130,8 +130,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							  <% if (!string.IsNullOrEmpty(Session["NickName"] as string))
             {
                 String Name = Session["NickName"].ToString();%> 
-                <!--<i class="fas fa-user"></i>--><div class="circle"><span><% Response.Write(Name[0]); %></span></div><b style="margin-left:10px; height:20px; width:20px; line-height:20px; border-radius:50%; background-color:White; text-align:center;"></b><% Response.Write(Session["NickName"]);  %>
-                                    
+                <!--<i class="fas fa-user"></i>--><div class="circle collapse navbar-collapse"><ul class="navbar-nav ml-auto text-center mr-xl-5"><li class="nav-item dropdown"><span><a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><% Response.Write(Name[0]); %></a></span></li></ul></div><b style="margin-left:10px; height:20px; width:20px; line-height:20px; border-radius:50%; background-color:White; text-align:center;"></b><% Response.Write(Session["NickName"]);  %>
+                
+                <div class="dropdown-menu">
+								<div class="agile_inner_drop_nav_info p-4">
+									<h5 class="mb-3">Mobiles, Computers</h5>
+									<div class="row">
+										<div class="col-sm-6 multi-gd-img">
+											<ul class="multi-column-dropdown">
+												<li>
+													<a href="product.aspx">All Mobile Phones</a>
+												</li>
+												<li>
+													<a href="product.aspx">All Mobile Accessories</a>
+												</li>
+												<li>
+													<a href="product.aspx">Cases & Covers</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+				</div>
                                 <% }  %> 
 								
 						</li>
