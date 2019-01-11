@@ -50,8 +50,7 @@ Product Name | Electrify Shop
     String[] typeArr = Type.Split(null);
     String[] arrDescription = Description.Split(Environment.NewLine.ToCharArray());
     String[] imgArr = ProductIMG.Split('|');
-    Response.Write(arrDescription.Length);
-     %>
+%>
 
 
 <div class="banner-bootom-w3-agileits py-5">

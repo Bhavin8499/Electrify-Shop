@@ -20,7 +20,7 @@ Admin Login | Electrify Shop
 					<form action="" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<input type="text" class="form-control" placeholder=" " name="Email" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>

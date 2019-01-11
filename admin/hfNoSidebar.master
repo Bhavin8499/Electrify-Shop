@@ -34,13 +34,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wtf-forms.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Main css -->
-	<link rel="stylesheet" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="../css/fontawesome-all.css">
 	<!-- Font-Awesome-Icons-CSS -->
-	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- pop-up-box -->
-	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/menu.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
 	<!-- //Custom-Files -->
 
@@ -50,7 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	    rel="stylesheet">
 	<!-- //web fonts -->
 	
-	<link rel="icon" href="images/favicon.png" type="image/x-icon"/>
+	<link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
 <style>
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -137,8 +137,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <h6 class="dropbtn11"><% Response.Write(Session["NickName"]);  %></h6>
                                 <div class="dropdown-content11">
                                   <a href="#">My Accounts</a>
-                                  <a href="#">My Order</a>
-                                  <a href="#">Track Order</a>
+                                  <a href="#">Get Deliverd Order</a>
+                                  <a href="#">Current Pending Order</a>
                                   <a href="#">Logout</a>
                                 </div>
                      </div>
@@ -152,27 +152,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 846020xxxx
 						</li>
-						<% if (string.IsNullOrEmpty(Session["NickName"] as string))
-         { %> 
-                                <li class="text-center border-right text-white">
-							        <a href="LoginCustomer.aspx"  class="text-white">
-								        <i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						        </li>
-						        <li class="text-center text-white">
-							        <a href="CustomerSignUp.aspx"  class="text-white">
-								        <i class="fas fa-sign-out-alt mr-2"></i>Register </a>
-						        </li>
-                                    
-                       <%  }
-                     else
-                     { %> 
-                       
-                              <li class="text-center border-right text-white">
-							       <a href="Order.aspx"  class="text-white">
-								       <i class="fas fa-box"></i> Order</a>
-						      </li>
-						       
-						      <% } %>
+						<li class="text-center text-white">
+							<a href="Order.aspx"  class="text-white">
+							<i class="fas fa-box"></i> Order Status</a>
+						</li>
+						    
 					
 					</ul>
 					<!-- //header lists -->
@@ -181,93 +165,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 
-	<!-- Button trigger modal(select-location) -->
-	
-	<!-- //shop locator (popup) -->
-
-	<!-- modals -->
-	<!-- log in -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-center">Log In</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Log in">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-								<label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
-							</div>
-						</div>
-						<p class="text-center dont-do mt-3">Don't have an account?
-							<a href="#" data-toggle="modal" data-target="#exampleModal2">
-								Register Now</a>
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- register -->
-	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Register</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Register">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
-	<!-- //top-header -->
 
 	<!-- header-bottom-->
 	<div class="header-bot">

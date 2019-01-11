@@ -90,8 +90,16 @@
 	<center>
 	<%
         SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\speed-\Documents\Electrify-Shop.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
-        con.Open(); 
-	    String query = "select top 9 * from Product";
+        con.Open();
+	    String query = String.Empty;
+        if (Request.QueryString["Type"] != null)
+        {
+            query = "Select top 9 * from Product where Type = '" + Request.QueryString["Type"]+"'";
+        }
+        else
+        {
+            query = "select top 9 * from Product";
+        }
         SqlCommand cmd = new SqlCommand(query,con);  
 	    SqlDataReader reader = cmd.ExecuteReader();
         if (reader.HasRows)
@@ -113,10 +121,12 @@
                 %>
                 <div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item text-center" >
-						<% Response.Write("<img src='images/product images/" + reader["Product_img"].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
+					
+						<% String[] imgArr = reader["Product_img"].ToString().Split('|');
+         Response.Write("<img src='images/product images/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
-				    		<a href="single.html" class="link-product-add-cart">Quick View</a>
+				    		<a href="SingleProduct.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>" class="link-product-add-cart">Quick View</a>
 						</div>
 						</div>
 						<span class="product-new-top">New</span>
