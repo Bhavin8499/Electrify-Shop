@@ -4,8 +4,27 @@
 Profile | Electrify Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-
-
+<%
+    
+    String firstClass = "";
+    String secondClass = "";
+    String navBarItem1 = "";
+    String navBarItem2 = "";
+    if (Request.QueryString["edit"] != null)
+    {
+        firstClass = "tab-pane fade";
+        secondClass = "tab-pane fade show active";
+        navBarItem1 = "nav-link";
+        navBarItem2 = "nav-link active";
+    }
+    else
+    {
+        secondClass = "tab-pane fade";
+        firstClass = "tab-pane fade show active";
+        navBarItem2 = "nav-link";
+        navBarItem1 = "nav-link active";
+    }
+ %>
 
 
 
@@ -32,14 +51,14 @@ Profile | Electrify Shop
                             <div class="col-12">
                                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                        <a class="<% Response.Write(navBarItem1); %>" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="false">Basic Info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Edit Profile</a>
+                                        <a class="<% Response.Write(navBarItem2); %>" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="true">Edit Profile</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content ml-1" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                    <div class="<% Response.Write(firstClass); %>" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                                         
 
                                         <div class="row">
@@ -110,68 +129,68 @@ Profile | Electrify Shop
                                         <hr />
 
                                     </div>
-                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                    <div class="<% Response.Write(secondClass); %>" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                                         
                                         
                                         
-                                        <div>
-				<div class="modal-body" style="margin:30px;">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" name="Name" required="" disabled value="Kishan Jinjariya">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Your Nickname</label>
-							<input type="text" class="form-control" name="Nickname" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Address</label>
-							<input type="text" class="form-control" name="Address" required="">
-						    
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Pin Code</label>
-							<input type="text" class="form-control" name="Pincode"  maxlength="6" onkeypress='validate(event)'  required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Mobile Number</label>
-							<input type="text" maxlength="10" onkeypress='validate(event)' class="form-control" name="Mobile" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" name="Email" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Gender</label><br />
-						    <input type="radio" value="Male" name="Gender" checked="true" /><label class="col-form-label">Male</label>
-						    <input type="radio" value="Female" name="Gender" /><label class="col-form-label">Female</label>
-						</div>		
-						<div>
-						                <label class="file">
-                                          <input type="file" id="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
-                                          <span class="file-custom"></span>
-                                        </label>
-						                <div>
-						                    <img id="output"  style="margin:5px; height:300px; border-radius:50%;"/>
-						                </div>
-						                    <script>
-						                    var loadFile = function(event)
-						                    {
-						                        var width = document.getElementById('file').offsetWidth;
-                                               var output = document.getElementById('output');
-                                              output.src = URL.createObjectURL(event.target.files[0]);
-                                              output.width = width;
-                                            };
-                                            </script>
-						            </div>
-										
-						
-						
+                                    <div>
+				                    <div class="modal-body" style="margin:30px;">
+					                    <form action="#" method="post">
+						                    <div class="form-group">
+							                    <label class="col-form-label">Your Name</label>
+							                    <input type="text" class="form-control" name="Name" required="" readonly="" value="Kishan Jinjariya">
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Your Nickname</label>
+							                    <input type="text" class="form-control" name="Nickname" required="">
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Address</label>
+							                    <input type="text" class="form-control" name="Address" required="">
+                    						    
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Pin Code</label>
+							                    <input type="text" class="form-control" name="Pincode"  maxlength="6" onkeypress='validate(event)'  required="">
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Mobile Number</label>
+							                    <input type="text" maxlength="10" onkeypress='validate(event)' class="form-control" name="Mobile" required="">
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Email</label>
+							                    <input type="email" class="form-control" name="Email" required="">
+						                    </div>
+						                    <div class="form-group">
+							                    <label class="col-form-label">Gender</label><br />
+						                        <input type="radio" value="Male" name="Gender" checked="true" /><label class="col-form-label">Male</label>
+						                        <input type="radio" value="Female" name="Gender" /><label class="col-form-label">Female</label>
+						                    </div>		
+						                    <div>
+						                                    <label class="file">
+                                                              <input type="file" id="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
+                                                              <span class="file-custom"></span>
+                                                            </label>
+						                                    <div>
+						                                        <img id="output"  style="margin:5px; height:300px; border-radius:50%;"/>
+						                                    </div>
+						                                        <script>
+						                                        var loadFile = function(event)
+						                                        {
+						                                            var width = document.getElementById('file').offsetWidth;
+                                                                   var output = document.getElementById('output');
+                                                                  output.src = URL.createObjectURL(event.target.files[0]);
+                                                                  output.width = width;
+                                                                };
+                                                                </script>
+						                                </div>
+                    										
+                    						
+                    						
 						
 						
 						<div class="right-w3l">
-							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Update" />
+							<input type="submit" class="form-control" id="btnSubmit" name="btnEditProfile" value="Update Profile" />
 						</div>
 						
 					</form>

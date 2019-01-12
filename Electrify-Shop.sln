@@ -1,24 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Electrify-Shop", ".", "{90690388-DAC2-4E23-A3DC-253971EFD120}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Electrify-Shop", ".", "{961190DF-F80E-4FC0-A6E0-ABCBAA5CC5BA}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "3.5"
 		Debug.AspNetCompiler.VirtualPath = "/Electrify-Shop"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\website\Electrify-Shop\"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\Electrify-Shop\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Electrify-Shop\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/Electrify-Shop"
-		Release.AspNetCompiler.PhysicalPath = "..\..\website\Electrify-Shop\"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\GitHub\Electrify-Shop\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Electrify-Shop\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "49193"
+		VWDPort = "50580"
 	EndProjectSection
 EndProject
 Global
@@ -26,8 +26,8 @@ Global
 		Debug|.NET = Debug|.NET
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{90690388-DAC2-4E23-A3DC-253971EFD120}.Debug|.NET.ActiveCfg = Debug|.NET
-		{90690388-DAC2-4E23-A3DC-253971EFD120}.Debug|.NET.Build.0 = Debug|.NET
+		{961190DF-F80E-4FC0-A6E0-ABCBAA5CC5BA}.Debug|.NET.ActiveCfg = Debug|.NET
+		{961190DF-F80E-4FC0-A6E0-ABCBAA5CC5BA}.Debug|.NET.Build.0 = Debug|.NET
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

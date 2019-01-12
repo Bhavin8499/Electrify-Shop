@@ -45,14 +45,14 @@ function validate(evt) {
 </h3>
             <div>
 				<div class="modal-body" style="margin:30px;">
-					<form action="#" method="post">
+					<form action="" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="col-form-label">Product Name</label>
 							<input type="text" class="form-control" name="product_name" required="">
 						</div>
 						<div class="form-group">
 						    <label class="col-form-label">Product Type</label>
-							<select style="display: block;
+							<select name="product_type" style="display: block;
   width: 100%;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
@@ -61,8 +61,16 @@ function validate(evt) {
   background-color: transparent;
   border: solid 1px gray;
   ">
-							<option>kidhasns</option>
-							<option>bhavin</option>
+							<option>Mobile Phone</option>
+							<option>Applinece</option>
+							<option>Headphone</option>
+							<option>PC</option>
+							<option>Laptop</option>
+							<option>Television</option>
+							<option>Camera</option>
+							<option>Hard Drives</option>
+							<option>Game Controllers</option>
+							<option>Software</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -97,7 +105,7 @@ function validate(evt) {
 						
 						<div>
 						    <label class="file">
-                              <input type="file" id="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
+                              <input type="file" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
                               <span class="file-custom"></span>
                             </label>
 						    <div>
@@ -116,7 +124,7 @@ function validate(evt) {
 						
 						<div>
 						    <label class="file">
-                              <input type="file" id="file1" aria-label="File browser example" accept="image/*" onchange="loadFile1(event)">
+                              <input type="file" id="file1"  name="file1" aria-label="File browser example" accept="image/*" onchange="loadFile1(event)">
                               <span class="file-custom"></span>
                             </label>
 						    <div>
@@ -135,7 +143,7 @@ function validate(evt) {
 						
 						<div>
 						    <label class="file">
-                              <input type="file" id="file2" aria-label="File browser example" accept="image/*" onchange="loadFile2(event)">
+                              <input type="file" id="file2" name="file2" aria-label="File browser example" accept="image/*" onchange="loadFile2(event)">
                               <span class="file-custom"></span>
                             </label>
 						    <div>
