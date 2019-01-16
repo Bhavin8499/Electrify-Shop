@@ -15,7 +15,7 @@ using System.Data.SqlClient;
 
 public partial class admin_addNewProduct : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection();
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -38,7 +38,7 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         String img1Name = String.Empty;
         String img2Name = String.Empty;
         String img3Name = String.Empty;
-
+        String CombinedImageName = String.Empty;
         HttpPostedFile img1 = Request.Files["file"];
         HttpPostedFile img2 = Request.Files["file1"];
         HttpPostedFile img3 = Request.Files["file2"];
@@ -53,6 +53,7 @@ public partial class admin_addNewProduct : System.Web.UI.Page
             String FilePath = MapPath("../images/products/") + ImgName;
             img1.SaveAs(FilePath);
             img1Name = ImgName;
+            CombinedImageName += ImgName;
         }
         if (img2 != null)
         {
@@ -61,6 +62,7 @@ public partial class admin_addNewProduct : System.Web.UI.Page
             String FilePath = MapPath("../images/products/") + ImgName;
             img2.SaveAs(FilePath);
             img2Name = ImgName;
+            CombinedImageName += "|"+ImgName;
         }
         if (img3 != null)
         {
@@ -69,11 +71,31 @@ public partial class admin_addNewProduct : System.Web.UI.Page
             String FilePath = MapPath("../images/products/") + ImgName;
             img3.SaveAs(FilePath);
             img3Name = ImgName;
+            CombinedImageName += "|" + ImgName;
         }
+       
+/*Name
+Type
+Price
+MRP
+Description
+Keyword
+BrandName
+Product_img
+SellerID
 
+*/
+        String[] keys = ProName.Split();
+        String Keywords = String.Join("||", keys);
+        String query = "insert into product values ('" + ProName + "','" + Type + "','" + Price + "','" + MRP + "','" + Desc + "','" + Keywords + "','" + Brand + "','" + CombinedImageName + "','1' )";
 
+        String demro = "insert into product values ('"+ProName+"','"+Type+"',"+Price+","+MRP+",'"+Desc+"','"+Keywords+"','"+Brand+"','"+CombinedImageName+"',1)";
 
-
+        con.Open();
+        SqlCommand cmd = new SqlCommand(demro, con);
+        int rowChanged = cmd.ExecuteNonQuery();
+        if (rowChanged > 0)
+            Response.Write("<script>alert('Product Added Successfully'); window.location = 'stockManager.aspx'<script>");
     }
 
 }

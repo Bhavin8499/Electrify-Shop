@@ -36,12 +36,13 @@ function validate(evt) {
 </script>
 <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top:40px;">
 	<span>P</span>lace
-	<span>O</span>eder
+	<span>O</span>rder
 </h3>
             <div>
 				<div class="modal-body" style="margin:30px;">
 					<form action="#" method="post">
 						<div class="form-group">
+						    <input type="hidden" name="CusID" value="<% Response.Write(1); %>" />
 							<label class="col-form-label">Your Name</label>
 							<input type="text" class="form-control" name="Name" required="">
 						</div>
@@ -66,9 +67,9 @@ function validate(evt) {
 						
 						<div class="form-group">
 							<label class="col-form-label">Pay Type</label><br />
-						    <input type="radio" value="Male" name="Gender" checked="true" /><label class="col-form-label">Electrify Cash</label>
+						    <input type="radio" value="EF" name="PayType" checked="true" /><label class="col-form-label">Electrify Cash</label>
 						    <br />
-						    <input type="radio" value="Female" name="Gender" /><label class="col-form-label">Cash On Dilavery</label>
+						    <input type="radio" value="COD" name="PayType" /><label class="col-form-label">Cash On Dilavery</label>
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Register" />

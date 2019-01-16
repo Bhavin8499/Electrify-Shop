@@ -2023,6 +2023,7 @@ select.form-control.option-w3ls {
 
 .form-control {
     border-radius: 0;
+	height: 24px;
 }
 
 /*-- //Payment page --*/

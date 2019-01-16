@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" AutoEventWireup="true" CodeFile="SellerOrders.aspx.cs" Inherits="admin_SellerOrders" Title="Untitled Page" %>
-
+<%@ Import Namespace="System.Data.SqlClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Orders | Electrify Shop
 </asp:Content>
@@ -52,8 +52,13 @@ Orders | Electrify Shop
         classLink3 = "tab-pane fade";
             
     }
+
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     
-    
+    con.Open();
+    String query = "select * from CusOrder Where ProID = 1";
+    SqlCommand cmd = new SqlCommand(query, con);
+    SqlDataReader reader = cmd.ExecuteReader();
 %>
 
 
@@ -91,6 +96,50 @@ Orders | Electrify Shop
                                 
                                 <div class="tab-content ml-1" id="myTabContent">
                                     <div class="<% Response.Write(classLink1); %>" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                       <%
+                                           if (reader.HasRows)
+                                           {
+                                               while (reader.Read())
+                                               {
+                                                   String proID = reader["ProID"].ToString();
+                                                   String cusID = reader["CusID"].ToString();
+                                                   String Price = reader["Price"].ToString();
+                                                   String Qty = reader["Price"].ToString();
+                                                   String userName = String.Empty;
+                                                   String userName = String.Empty;
+                                                   String userName = String.Empty;
+                                                   String userName = String.Empty;
+                                                   String userName = String.Empty;
+                                                   
+                                                   
+                                                   String queryPro = "select * from product where ID =" + proID;
+                                                   SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                                                   SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                                                   if (reader.HasRows)
+                                                   {
+                                                       while (reader.Read())
+                                                       {
+                                                           
+                                                       }
+                                                   }
+                                                   
+                                                   
+                                                    
+                                                   
+                                               }
+
+                                           }
+                                           else
+                                           {
+                                               Response.Write("There Is No Current Orders");
+                                           }
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                        %>
                                         <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                                             <table class="timetable_sub">
@@ -109,6 +158,7 @@ Orders | Electrify Shop
                                             </table>
                                             </div>
                                          </div>
+                                         
                                     </div>
                                     
                                     
