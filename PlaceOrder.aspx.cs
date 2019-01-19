@@ -18,7 +18,7 @@ public partial class PlaceOrder : System.Web.UI.Page
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.Form[""] != null)
+        if (Request.Form["btnSubmit"] != null)
         {
             doPlaceOrder();
         }
@@ -54,7 +54,7 @@ public partial class PlaceOrder : System.Web.UI.Page
                 {
                     Date = DateTime.Now.ToShortDateString();
                     ProID = reader["ProductID"].ToString();
-                    qty = reader["Qty"];
+                    qty = Convert.ToInt32(reader["Qty"].ToString());
 
                     String productQuery = "select * from Product where ID = "+ProID;
                     SqlCommand cmdProduct = new SqlCommand(productQuery,con);
@@ -67,7 +67,7 @@ public partial class PlaceOrder : System.Web.UI.Page
                             SellerID = readerProduct["SellerID"].ToString();
                         }
                     }
-                    String queryInsert = "insert into CusOrder ()";
+                    String queryInsert = "insert into CusOrder values (" + CusID + "," + ProID + ", " + SellerID + "," + Price + "," + Date + ", '" + Message + "','',, '" + Name + "','" + Address + "', " + Pincode + ", " + MobileNo + ", '" + Email + "',' " + PayType + "', " + qty + ")";
                     SqlCommand insertProductCmd = new SqlCommand(queryInsert, con);
                     insertProductCmd.ExecuteNonQuery();
 

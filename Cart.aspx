@@ -11,21 +11,17 @@ Cart | Electrify Shop
     SqlConnection con = null;
     String query = String.Empty;
     SqlDataReader reader = null;
-    if (string.IsNullOrEmpty(Session["ID"] as string))
+    if (Session["ID"] == null)
     {
         Response.Write("<script>alert('Please Login To View Your Cart Cart'); window.location = \"LoginCustomer.aspx\";</script>");
     }
     else
     {
-        query = "select * from Cart where CusID=" + Session["ID"].ToString();
+        query = "select * from Customer_Cart where CusID=" + Session["ID"].ToString();
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
         SqlCommand cmd = new SqlCommand(query, con);
-        reader = cmd.ExecuteReader();
-    }
-        
-    
-    
+        reader = cmd.ExecuteReader(); 
      %>
 	<div class="privacy py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
@@ -54,25 +50,25 @@ Cart | Electrify Shop
 						</thead>
 						<tbody>
 					<%
-                        int i = 0;		    
-                        if (reader.HasRows)
-                        {
-                            i = 1;
-                            while (reader.Read())
-                            {
-                                SqlConnection conProduct = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-                                conProduct.Open();
-                                String query1 = "select * from Product where ID="+reader["ProID"].ToString();
-                                SqlCommand cmdProduct = new SqlCommand(query1, conProduct);
-                                SqlDataReader readerProduct = cmdProduct.ExecuteReader();
-                                if (readerProduct.HasRows)
-                                {
-                                    while (readerProduct.Read())
-                                    {
-                                        String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
-                                        double Price = Convert.ToDouble(readerProduct["Price"].ToString());
-                                        double qty = Convert.ToDouble(reader["Qty"].ToString());
-                                        double Total = Price * qty;
+    int i = 0;
+    if (reader.HasRows)
+    {
+        i = 1;
+        while (reader.Read())
+        {
+            SqlConnection conProduct = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            conProduct.Open();
+            String query1 = "select * from Product where ID=" + reader["ProductID"].ToString();
+            SqlCommand cmdProduct = new SqlCommand(query1, conProduct);
+            SqlDataReader readerProduct = cmdProduct.ExecuteReader();
+            if (readerProduct.HasRows)
+            {
+                while (readerProduct.Read())
+                {
+                    String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                    double Price = Convert.ToDouble(readerProduct["Price"].ToString());
+                    double qty = Convert.ToDouble(reader["Qty"].ToString());
+                    double Total = Price * qty;
                                         
                             %>
                                                 <tr class="rem1">
@@ -103,11 +99,11 @@ Cart | Electrify Shop
 							                    </td>
 						                </tr>
                             <%
-                                    }
-                                }
-                                i++;
-                            }
-                        }			    
+    }
+            }
+            i++;
+        }
+    }			    
 		
 				     %>
 						    
@@ -318,6 +314,7 @@ Cart | Electrify Shop
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<% } %>
 </asp:Content>
 
 

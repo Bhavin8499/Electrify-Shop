@@ -30,7 +30,7 @@ public partial class SingleProduct : System.Web.UI.Page
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
-        String query = "insert into Cart values ("+CusID+","+ProID+","+Quntity+")";
+        String query = "insert into Customer_Cart values ("+CusID+","+ProID+","+Quntity+")";
 
         SqlCommand cmd = new SqlCommand(query, con);
         int num = cmd.ExecuteNonQuery();

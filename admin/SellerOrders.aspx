@@ -105,12 +105,12 @@ Orders | Electrify Shop
                                                    String cusID = reader["CusID"].ToString();
                                                    String Price = reader["Price"].ToString();
                                                    String Qty = reader["Price"].ToString();
+                                                  /* String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
-                                                   String userName = String.Empty;
-                                                   
+                                                   */
                                                    
                                                    String queryPro = "select * from product where ID =" + proID;
                                                    SqlCommand cmdPro = new SqlCommand(queryPro, con);
