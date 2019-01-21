@@ -72,7 +72,7 @@ function validate(evt) {
 						    <input type="radio" value="COD" name="PayType" /><label class="col-form-label">Cash On Dilavery</label>
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Register" />
+							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Place Order" />
 						</div>
 						
 					</form>

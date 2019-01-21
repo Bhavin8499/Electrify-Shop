@@ -27,14 +27,18 @@ Order | Electrify-Shop
                if (readerPrdouct.HasRows)
                {
                    while (readerPrdouct.Read())
-                   {%>
+                   {
+                       Response.Write(readerPrdouct["Product_img"].ToString());
+                       //String[] imgArr = readerPrdouct["Product_img"].ToString().Split("|");
+                   
+                       %>
                    
                    <div style="margin:50px;">
                     <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                     <table class="timetable_sub">
                     <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : 78945612123</H5></tr>
                     <tr>
-                        <td><div style="width:150px; margin:10px;"><a href="#"><img src="images/product images/p3.jpeg" style="width:50%;"/></a></div></td>
+                        <td><div style="width:150px; margin:10px;"><a href="#"><img src="images/product.<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
                         
                         <td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
                         

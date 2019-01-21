@@ -107,7 +107,7 @@ Cart | Electrify Shop
 		
 				     %>
 						    
-							
+							<tr><td colspan="7"><div class="right-w3l"> <form method=post action="PlaceOrder.aspx"> <input type="submit" class="form-control" value="Check Out" > </form></div></td></tr>
 						</tbody>
 					</table>
 				</div>
