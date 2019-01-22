@@ -123,13 +123,13 @@
 					<div class="men-thumb-item text-center" >
 					
 						<% String[] imgArr = reader["Product_img"].ToString().Split('|');
-         Response.Write("<img src='images/product images/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
+         Response.Write("<img src='images/products/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 				    		<a href="SingleProduct.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>" class="link-product-add-cart">Quick View</a>
 						</div>
 						</div>
-						<span class="product-new-top">New</span>
+						<!--<span class="product-new-top">New</span>-->
 					</div>
 					<div class="item-info-product text-center border-top mt-4">
 						<h4 class="pt-1">

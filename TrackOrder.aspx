@@ -9,13 +9,13 @@ Track Order
 
 <% if (string.IsNullOrEmpty(Session["ID"] as string))
    { 
-       Response.Write("<script>alert('Please Login To See Your Orders'); window.location='CustomerLogin.aspx'; </script>"); 
+       Response.Write("<script>alert('Please Login To See Your Orders'); window.location='LoginCustomer.aspx'; </script>"); 
    }   
    else
    {
        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
        con.Open();
-       String query = "select * from CusOrder where ID = 1";// +Request.Form["ID"].ToString() + " ";
+       String query = "select * from CusOrder where ID = "+Request.QueryString["ID"].ToString() + " ";
        SqlCommand cmd = new SqlCommand(query, con);
        SqlDataReader reader = cmd.ExecuteReader();
        if (reader.HasRows)
@@ -30,7 +30,10 @@ Track Order
                if (readerPrdouct.HasRows)
                {
                    while (readerPrdouct.Read())
-                   {%>
+                   {
+                       String[] imgArr = readerPrdouct["Product_img"].ToString().Split('|');
+                       
+                    %>
                    
                    <div style="margin:50px;">
                     <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
@@ -42,16 +45,19 @@ Track Order
                      --><li class="progtrckr-done">Shipped</li><!--
                      --><li class="progtrckr-todo">Delivered</li>
                     </ol></td></tr>
-                        <tr style="border-bottom:1px;"><td colspan=2><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : 78945612123</H5></td></tr>
+                        <tr style="border-bottom:1px;"><td colspan=2><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : <% Response.Write(reader["ID"].ToString()); %></H5></td></tr>
                         <tr>
-                            <td align=center colspan=2><div style="margin:10px;" align=center><a href="#"><img src="images/product images/p3.jpeg" style="width:30%;"/></a></div></td>
+                        
+                        
+                            <td align=center colspan=2><div style="margin:10px;" align=center><a href="#"><img src="images/products/<% Response.Write(imgArr[0]); %>" style="width:30%;"/></a></div></td>
                             
-                            <tr><td><h2>Product Name :</h2> </td><td style="width:200px;"><b>Oppo F7</b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td></tr>
+                            <tr><td><h2>Product Name :</h2> </td><td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td></tr>
                             
-                            <tr><td><h2>Price :</h2></td><td style="width:100px;"><b>$12364</b></td></tr>
+                            <tr><td><h2>Price :</h2></td><td style="width:100px;"><b>$<% Response.Write(readerPrdouct["Price"].ToString()); %></b></td></tr>
                             
-                            <tr><td><h2>Delivary Notes :</h2> </td><td>Deleverd on 1 april, 2018 
-                                <span>your item has bin deleviers</span></td></tr>
+                            <tr><td><h2>Delivary Notes :</h2> </td><td><% Response.Write(reader["Message"].ToString()); %></td></tr>
+                            
+                            <tr><td><h2>Status :</h2> </td><td><% Response.Write(reader["Status"].ToString()); %></td></tr>
                             
                             <tr><td style="width:100px;" colspan=2><b><a href="CancleOrder.aspx"><img src="images/product images/Business_E-commerce__Logistics_55-512.png" width=10%/><br />Cancle Order</a></b></td></tr>
                             
