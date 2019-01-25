@@ -56,7 +56,7 @@ Orders | Electrify Shop
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     
     con.Open();
-    String query = "select * from CusOrder Where ProID = 1";
+    String query = "select * from CusOrder";// Where SellerID = 1";
     SqlCommand cmd = new SqlCommand(query, con);
     SqlDataReader reader = cmd.ExecuteReader();
 %>
@@ -96,7 +96,7 @@ Orders | Electrify Shop
                                 
                                 <div class="tab-content ml-1" id="myTabContent">
                                     <div class="<% Response.Write(classLink1); %>" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-                                       <%
+                                    <%
                                            if (reader.HasRows)
                                            {
                                                while (reader.Read())
@@ -104,23 +104,46 @@ Orders | Electrify Shop
                                                    String proID = reader["ProID"].ToString();
                                                    String cusID = reader["CusID"].ToString();
                                                    String Price = reader["Price"].ToString();
-                                                   String Qty = reader["Price"].ToString();
+                                                   String Qty = reader["Qty"].ToString();
                                                   /* String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    String userName = String.Empty;
                                                    */
-                                                   
+                                                   int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
                                                    String queryPro = "select * from product where ID =" + proID;
                                                    SqlCommand cmdPro = new SqlCommand(queryPro, con);
                                                    SqlDataReader readerProduct = cmdPro.ExecuteReader();
-                                                   if (reader.HasRows)
+                                                   if (readerProduct.HasRows)
                                                    {
-                                                       while (reader.Read())
+                                                       while (readerProduct.Read())
                                                        {
-                                                           
-                                                       }
+                                                           String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                                                       %>
+                                                                <div style="margin:50px;">
+                                                <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
+                                                <table class="timetable_sub">
+                                                    <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : <% Response.Write(reader["ID"].ToString()); %></H5></tr>
+                                                    <tr>
+                                                        <td><div style="width:150px; margin:10px;"><a href="#"><img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
+                                                        
+                                                        <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
+                                                        
+                                                        <td style="width:100px;"><b>$<% Response.Write(Price); %> <br /> x &nbsp; <% Response.Write(Qty); %> <br />_____________<br />$<% Response.Write(Total.ToString()); %> </b></td>
+                                                        
+                                                        <td><% Response.Write(reader["Name"].ToString()); %> <br />____________________________________________________<br /><% Response.Write(reader["Address"].ToString()); %><br />____________________________________________________<br /><% Response.Write(reader["MobileNo"].ToString()); %></td>
+                                                        <td style="width:100px;"><b><a href="TrackOrder.aspx">Edit Shipping Details</a></b></td>
+                                                        
+                                                    </tr>
+                                                </table>
+                                                </div>
+                                             </div>
+                                                    <%       }
+                                                   }
+                                                   else
+                                                   {
+                                                       Response.Write("There Is No Current Orders");
                                                    }
                                                    
                                                    
@@ -140,6 +163,7 @@ Orders | Electrify Shop
                                            
                                            
                                         %>
+                                        <!--
                                         <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                                             <table class="timetable_sub">
@@ -158,7 +182,7 @@ Orders | Electrify Shop
                                             </table>
                                             </div>
                                          </div>
-                                         
+                                         -->
                                     </div>
                                     
                                     
