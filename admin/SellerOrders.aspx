@@ -188,6 +188,61 @@ Orders | Electrify Shop
                                     
                                     
                                     <div class="<% Response.Write(classLink2); %>" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                       <%
+                                           reader.Close();
+                                           reader = cmd.ExecuteReader();
+                                           if (reader.HasRows)
+                                           {
+
+                                               while (reader.Read())
+                                               {
+                                                   if (reader["Status"].ToString() != "Delivered")
+                                                   {
+                                                       String proID = reader["ProID"].ToString();
+                                                       String cusID = reader["CusID"].ToString();
+                                                       String Price = reader["Price"].ToString();
+                                                       String Qty = reader["Qty"].ToString();
+                                                       /* String userName = String.Empty;
+                                                        String userName = String.Empty;
+                                                        String userName = String.Empty;
+                                                        String userName = String.Empty;
+                                                        String userName = String.Empty;
+                                                        */
+                                                       int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+                                                       String queryPro = "select * from product where ID =" + proID;
+                                                       SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                                                       SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                                                       if (readerProduct.HasRows)
+                                                       {
+                                                           while (readerProduct.Read())
+                                                           {
+                                                               String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                                                       %>
+                                        <div style="margin:50px;">
+                                            <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
+                                            <table class="timetable_sub">
+                                                <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : <% Response.Write(reader["ID"].ToString()); %></H5></tr>
+                                                <tr>
+                                                    <td><div style="width:150px; margin:10px;"><a href="#"><img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
+                                                    
+                                                    <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
+                                                    
+                                                    <td style="width:100px;"><b>$<% Response.Write(Price); %> <br /> x &nbsp; <% Response.Write(Qty); %><br />_____________<br />$<% Response.Write(Total.ToString()); %></b></td>
+                                                    
+                                                    <td><% Response.Write(reader["Name"].ToString()); %><br />____________________________________________________<br /><% Response.Write(reader["Address"].ToString()); %><br />____________________________________________________<br /><% Response.Write(reader["MobileNo"].ToString()); %></td>
+                                                    
+                                                </tr>
+                                            </table>
+                                            </div>
+                                         </div>
+                                                  <% }
+                                                       }
+                                                   }
+                                               }
+                                           } 
+                                           
+                                        %>
+                                        <!--
                                         <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                                             <table class="timetable_sub">
@@ -205,28 +260,89 @@ Orders | Electrify Shop
                                             </table>
                                             </div>
                                          </div>
+                                         -->
                                     </div>
-                                    
                                     <div class="<% Response.Write(classLink3); %>" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-                                         <div style="margin:50px;">
-                                            <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
-                                            <table class="timetable_sub">
-                                                <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : 78945612123</H5></tr>
-                                                <tr>
-                                                    <td><div style="width:150px; margin:10px;"><a href="#"><img src="images/product images/p3.jpeg" style="width:50%;"/></a></div></td>
-                                                    
-                                                    <td style="width:200px;"><b>Oppo F7</b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
-                                                    
-                                                    <td style="width:100px;"><b>$12364 <br /> x &nbsp; 5<br />_____________<br />50005</b></td>
-                                                    
-                                                    <td>Kishan Jinjariya<br />____________________________________________________<br />"Shakti Nivas", Chamunda Soc., Opp. Ranchhoddas Ashram, Kuvadava Road, Rajkot.<br />____________________________________________________<br />9913829112</td>
-                                                    <td style="width:100px;"><b><a href="TrackOrder.aspx">Approve</a></b></td>
-                                                    <td style="width:100px;"><b><a href="TrackOrder.aspx">disapprove</a></b></td>
-                                                    
-                                                </tr>
-                                            </table>
+                                        <%
+                                          reader.Close();
+                                          reader = cmd.ExecuteReader();
+
+                                          if (reader.HasRows)
+                                          {
+                                              while (reader.Read())
+                                              {
+                                                  if (reader["Status"].ToString() != "Delivered")
+                                                  {
+                                                      if (reader["Approved"].ToString() != "Approved")
+                                                      {
+                                                          String proID = reader["ProID"].ToString();
+                                                          String cusID = reader["CusID"].ToString();
+                                                          String Price = reader["Price"].ToString();
+                                                          String Qty = reader["Qty"].ToString();
+                                                          /* String userName = String.Empty;
+                                                           String userName = String.Empty;
+                                                           String userName = String.Empty;
+                                                           String userName = String.Empty;
+                                                           String userName = String.Empty;
+                                                           */
+                                                          int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+                                                          String queryPro = "select * from product where ID =" + proID;
+                                                          SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                                                          SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                                                          if (readerProduct.HasRows)
+                                                          {
+                                                              while (readerProduct.Read())
+                                                              {
+                                                                  String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                                        %>
+                                        <div style="margin: 50px;">
+                                            <div style="width: 98%; box-shadow: -1px 1px 1px 1px Gray;" class="table-responsive">
+                                                <table class="timetable_sub">
+                                                    <tr style="border-bottom: 1px;">
+                                                        <h5 style="font-size: medium; margin: 20px; margin-top: 30px;">
+                                                            Order No. : <% Response.Write(reader["ID"].ToString()); %></h5>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="width: 150px; margin: 10px;">
+                                                                <a href="#">
+                                                                    <img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width: 50%;" /></a></div>
+                                                        </td>
+                                                        <td style="width: 200px;">
+                                                            <b><% Response.Write(readerProduct["Name"].ToString()); %></b><br />
+                                                            <span style="color: Gray; font-size: x-small;">Color : Grey</span>
+                                                        </td>
+                                                        <td style="width: 100px;">
+                                                            <b>$<% Response.Write(Price); %>
+                                                                <br />
+                                                                x &nbsp; <% Response.Write(Qty); %><br />
+                                                                _____________<br />
+                                                                $<% Response.Write(Total); %></b>
+                                                        </td>
+                                                        <td>
+                                                            <% Response.Write(reader["Name"].ToString()); %><br />
+                                                            ____________________________________________________<br />
+                                                            <% Response.Write(reader["Address"].ToString()); %><br />
+                                                            ____________________________________________________<br />
+                                                            <% Response.Write(reader["MobileNo"].ToString()); %>
+                                                        </td>
+                                                        <td style="width: 100px;">
+                                                            <b><a href="TrackOrder.aspx">Approve</a></b>
+                                                        </td>
+                                                        <td style="width: 100px;">
+                                                            <b><a href="TrackOrder.aspx">disapprove</a></b>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
-                                         </div>
+                                        </div>
+                                        <%                }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                        %>
                                     </div>
                                 </div>
                             </div>

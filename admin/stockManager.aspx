@@ -1,11 +1,17 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" AutoEventWireup="true" CodeFile="stockManager.aspx.cs" Inherits="admin_stockManager" Title="Untitled Page" %>
-
+<%@ Import Namespace="System.Data.SqlClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Stock Manager | Electrify Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 
-
+<%
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+    con.Open();
+    String query = "select * from Product where SellerID = 1";
+    SqlCommand cmd = new SqlCommand(query, con);
+    SqlDataReader reader = cmd.ExecuteReader();
+ %>
 
 
 <div class="container">
@@ -40,10 +46,15 @@ Stock Manager | Electrify Shop
                                 
                                 <div class="tab-content ml-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-                                        <div style="margin:50px;">
+                                       
+                                       <% if (reader.HasRows)
+                                          {
+                                              while (reader.Read())
+                                              {%>
+                                                  <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                                             <table class="timetable_sub">
-                                                <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Product ID : 78</H5></tr>
+                                                <tr style="border-bottom:1px;"><H5 style="font-size:medium; margin:20px; margin-top:30px;">Product ID : <% Response.Write(reader["ID"].ToString()); %></H5></tr>
                                                 <tr>
                                                     <td><div style="width:150px; margin:10px;"><a href="#"><img src="images/product images/p3.jpeg" style="width:50%;"/></a></div></td>
                                                     
@@ -53,13 +64,26 @@ Stock Manager | Electrify Shop
                                                     
                                                     <td>3 GB RAM | 16 GB ROM | Expandable Upto 256 GB</td>
                                                     <td style="width:150px;">
-                                                        <form id='myform' method='POST' action='#'>
+                                                        <form id='myform' method='post' action='#'>
                                                             <input type='button' value='-' class='qtyminus' field='quantity' />
                                                             <input type='text' name='quantity' value='0' class='qty' />
+                                                            <input type="hidden" name="ProID" value="<% Response.Write('1'); %>" />
                                                             <input type='button' value='+' class='qtyplus' field='quantity' />
                                                             <input style="font-size:1em; margin:0; padding:0; border:0; background-color:White;" name="Submit" type="submit" value="Restock">
-                                                        </form>
+                                                        </form>  
                                                     </td>
+                                                     <td style="width:100px;"><b><a href="TrackOrder.aspx">Delete Product</a></b></td>
+                                                 </tr>
+                                            </table>
+                                            </div>
+                                         </div>   
+                                                  
+                                              <%}
+                                          } %>
+                                       
+                                                                              
+                                    </div>
+                                    </div>
 <script>
 jQuery(document).ready(function(){
     // This button will increment the value
@@ -99,14 +123,7 @@ jQuery(document).ready(function(){
 });
 
 </script>
-                                                    <td style="width:100px;"><b><a href="TrackOrder.aspx">Delete Product</a></b></td>
-                                                    
-                                                </tr>
-                                            </table>
-                                            </div>
-                                         </div>
-                                         
-                                    </div>
+                                                   
                                     
                                     
                                     
