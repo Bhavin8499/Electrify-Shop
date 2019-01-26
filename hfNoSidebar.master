@@ -184,18 +184,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<i class="fas fa-shopping-cart ml-1"></i>
 					</p>
 				</div>
-				<div class="col-lg-8 header-right mt-lg-0 mt-2">
+				<div class="col-lg-6 header-right mt-lg-0 mt-2">
 					<!-- header lists -->
 					<ul>
-						<li class="text-center border-right text-white">
+					    <li> </li>
+					    <li> </li>
+					    <li> </li>
+					    <li> </li>
+						<li class="text-center text-white">
 							<!--<a class="play-icon popup-with-zoom-anim text-white"></a>-->
 							  <% if (!string.IsNullOrEmpty(Session["NickName"] as string))
-            {
-                String Name = Session["NickName"].ToString();%> 
-                <!--<i class="fas fa-user"></i>--><div class="circle"><% Response.Write(Name[0]); %></div><b style="margin-left:10px; height:20px; width:20px; line-height:20px; border-radius:50%; background-color:White; text-align:center;"></b>
-              
+                        {
+                          String Name = Session["NickName"].ToString();%> 
+                         <!--<i class="fas fa-user"></i>--><div class="circle"><% Response.Write(Name[0]); %></div><b style="margin-left:10px; height:20px; width:20px; line-height:20px; border-radius:50%; background-color:White; text-align:center;"></b>
+                        <% } %>
 				     
-				     <div class="dropdown11">
+				     <% if (!string.IsNullOrEmpty(Session["NickName"] as string))
+            {%>
+						<div class="dropdown11">
                             <h6 class="dropbtn11"><% Response.Write(Session["NickName"]);  %></h6>
                                 <div class="dropdown-content11">
                                   <a href="#">My Accounts</a>
@@ -203,38 +209,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                   <a href="#">Track Order</a>
                                   <a href="#">Logout</a>
                                 </div>
-                     </div>
-                                                    <% }  %> 
-								
-						</li>
-						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-								<i class="fas fa-truck mr-2"></i>Track Order</a>
-						</li>
-						<li class="text-center border-right text-white">
-							<i class="fas fa-phone mr-2"></i> 846020xxxx
-						</li>
-						<% if (string.IsNullOrEmpty(Session["NickName"] as string))
-         { %> 
-                                <li class="text-center border-right text-white">
-							        <a href="LoginCustomer.aspx"  class="text-white">
-								        <i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						        </li>
-						        <li class="text-center text-white">
-							        <a href="CustomerSignUp.aspx"  class="text-white">
-								        <i class="fas fa-sign-out-alt mr-2"></i>Register </a>
-						        </li>
-                                    
-                       <%  }
-                     else
-                     { %> 
-                       
-                              <li class="text-center border-right text-white">
-							       <a href="Order.aspx"  class="text-white">
-								       <i class="fas fa-box"></i> Order</a>
-						      </li>
-						       
-						      <% } %>
+						</div>
+						
+					<% } else { %>
+							<div class="dropdown11">
+							    Login & Register
+								<div class="dropdown-content11">
+									<a href="LoginCustomer.aspx">Login</a>
+									<a href="CustomerSignUp.aspx">Register</a>
+								</div>
+                            </div>
+					
+					<% } %>
+				     
 					
 					</ul>
 					<!-- //header lists -->

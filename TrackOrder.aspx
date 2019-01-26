@@ -32,6 +32,53 @@ Track Order
                    while (readerPrdouct.Read())
                    {
                        String[] imgArr = readerPrdouct["Product_img"].ToString().Split('|');
+
+                       String pkgTrack1 = "progtrckr-done";
+                       String pkgTrack2 = "progtrckr-done";
+                       String pkgTrack3 = "progtrckr-done";
+                       String pkgTrack4 = "progtrckr-done";
+                       String pkgTrack5 = "progtrckr-done";
+
+                       if (reader["Status"].ToString() == "Order Processing")
+                       {
+                           pkgTrack1 = "progtrckr-done";
+                           pkgTrack2 = "progtrckr-todo";
+                           pkgTrack3 = "progtrckr-todo";
+                           pkgTrack4 = "progtrckr-todo";
+                           pkgTrack5 = "progtrckr-todo";
+                       }
+                       else if (reader["Status"].ToString() == "Pre-Production")
+                       {
+                           pkgTrack1 = "progtrckr-done";
+                           pkgTrack2 = "progtrckr-done";
+                           pkgTrack3 = "progtrckr-todo";
+                           pkgTrack4 = "progtrckr-todo";
+                           pkgTrack5 = "progtrckr-todo";
+                       }
+                       else if (reader["Status"].ToString() == "In Production")
+                       {
+                           pkgTrack1 = "progtrckr-done";
+                           pkgTrack2 = "progtrckr-done";
+                           pkgTrack3 = "progtrckr-done";
+                           pkgTrack4 = "progtrckr-todo";
+                           pkgTrack5 = "progtrckr-todo";
+                       }
+                       else if (reader["Status"].ToString() == "Shipped")
+                       {
+                           pkgTrack1 = "progtrckr-done";
+                           pkgTrack2 = "progtrckr-done";
+                           pkgTrack3 = "progtrckr-done";
+                           pkgTrack4 = "progtrckr-done";
+                           pkgTrack5 = "progtrckr-todo";
+                       }
+                       else if (reader["Status"].ToString() == "Delivered")
+                       {
+                           pkgTrack1 = "progtrckr-done";
+                           pkgTrack2 = "progtrckr-done";
+                           pkgTrack3 = "progtrckr-done";
+                           pkgTrack4 = "progtrckr-done";
+                           pkgTrack5 = "progtrckr-done";
+                       }
                        
                     %>
                    
@@ -39,11 +86,11 @@ Track Order
                     <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
                     <table class="timetable_sub">
                         <tr><td style="width:95%;" align=center colspan=2><ol class="progtrckr" data-progtrckr-steps="5" style="margin:20px;">
-                        <li class="progtrckr-done">Order Processing</li><!--
-                     --><li class="progtrckr-done">Pre-Production</li><!--
-                     --><li class="progtrckr-done">In Production</li><!--
-                     --><li class="progtrckr-done">Shipped</li><!--
-                     --><li class="progtrckr-todo">Delivered</li>
+                        <li class="<% Response.Write(pkgTrack1); %>">Order Processing</li><!--
+                     --><li class="<% Response.Write(pkgTrack2); %>">Pre-Production</li><!--
+                     --><li class="<% Response.Write(pkgTrack3); %>">In Production</li><!--
+                     --><li class="<% Response.Write(pkgTrack4); %>">Shipped</li><!--
+                     --><li class="<% Response.Write(pkgTrack5); %>">Delivered</li>
                     </ol></td></tr>
                         <tr style="border-bottom:1px;"><td colspan=2><H5 style="font-size:medium; margin:20px; margin-top:30px;">Order No. : <% Response.Write(reader["ID"].ToString()); %></H5></td></tr>
                         <tr>
@@ -59,7 +106,7 @@ Track Order
                             
                             <tr><td><h2>Status :</h2> </td><td><% Response.Write(reader["Status"].ToString()); %></td></tr>
                             
-                            <tr><td style="width:100px;" colspan=2><b><a href="CancleOrder.aspx"><img src="images/product images/Business_E-commerce__Logistics_55-512.png" width=10%/><br />Cancle Order</a></b></td></tr>
+                            <tr><td style="width:100px;" colspan=2><b><a href="CancelOrder.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>"><img src="images/product images/Business_E-commerce__Logistics_55-512.png" width=10%/><br />Cancle Order</a></b></td></tr>
                             
                         </tr>
                     </table>

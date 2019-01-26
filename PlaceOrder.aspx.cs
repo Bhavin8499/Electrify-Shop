@@ -40,6 +40,7 @@ public partial class PlaceOrder : System.Web.UI.Page
         String MobileNo = Request.Form["Mobile"].ToString();
         String Email = Request.Form["Email"].ToString();
         String PayType = Request.Form["PayType"].ToString();
+        String Status = "Order Processing";
         int qty = 0;
         
         try
@@ -67,13 +68,15 @@ public partial class PlaceOrder : System.Web.UI.Page
                             SellerID = readerProduct["SellerID"].ToString();
                         }
                     }
-                    String queryInsert = "insert into CusOrder values (" + CusID + "," + ProID + ", " + SellerID + "," + Price + "," + Date + ", '" + Message + "','','','" + Name + "','" + Address + "', " + Pincode + ", " + MobileNo + ", '" + Email + "',' " + PayType + "', " + qty + ")";
+                    String queryInsert = "insert into CusOrder values (" + CusID + "," + ProID + ", " + SellerID + "," + Price + "," + Date + ", '" + Message + "','"+Status+"','','" + Name + "','" + Address + "', " + Pincode + ", " + MobileNo + ", '" + Email + "',' " + PayType + "', " + qty + ")";
                     SqlCommand insertProductCmd = new SqlCommand(queryInsert, con);
                     insertProductCmd.ExecuteNonQuery();
 
                     String removeCart = "delete from Customer_Cart where ID = "+reader["ID"].ToString();
                     SqlCommand deleteCommand = new SqlCommand(removeCart, con);
                     deleteCommand.ExecuteNonQuery();
+
+                    Response.Write("<script>alert('Your Orders Placed Successfully'); window.location = 'Order.aspx';</script>");
 
                 }
             }
