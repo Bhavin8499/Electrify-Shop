@@ -113,7 +113,7 @@ Home | Electrify Shop
                 <div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item text-center" >
 						<%  String[] imgArr = reader["Product_img"].ToString().Split('|');
-          Response.Write("<img src='images/products/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
+              Response.Write("<img src='images/products/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 				    		<a href="SingleProduct.aspx?ID=<% Response.Write(reader[0].ToString());  %>" class="link-product-add-cart">Quick View</a>

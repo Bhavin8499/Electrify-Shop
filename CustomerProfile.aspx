@@ -1,18 +1,78 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/hfNoSidebar.master" AutoEventWireup="true" CodeFile="CustomerProfile.aspx.cs" Inherits="CustomerProfile" Title="Untitled Page" %>
-
+<%@ Import Namespace="System.Data.SqlClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Customer Profile | Electrify-Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
+<% 
 
+    String firstClass = "";
+    String secondClass = "";
+    String navBarItem1 = "";
+    String navBarItem2 = "";
+    if (Request.QueryString["edit"] != null)
+    {
+        firstClass = "tab-pane fade";
+        secondClass = "tab-pane fade show active";
+        navBarItem1 = "nav-link";
+        navBarItem2 = "nav-link active";
+    }
+    else
+    {
+        secondClass = "tab-pane fade";
+        firstClass = "tab-pane fade show active";
+        navBarItem2 = "nav-link";
+        navBarItem1 = "nav-link active";
+    }
+    
+    
+   
 
+    if (Session["ID"] != null)
+    {
+        Response.Write("<script>alert('Please Login To Check Your Profile'); window.location = 'LoginCustomer.aspx';</script>");
+    }
+    else
+    {
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+        con.Open();
 
+        String query = "select * from Customers where ID = 1";
+        SqlCommand cmd = new SqlCommand(query, con);
 
+        SqlDataReader reader = cmd.ExecuteReader();
 
-
-
-
-
+        String ID = String.Empty;
+        String Name = String.Empty;
+        String NickName = String.Empty;
+        String Address = String.Empty;
+        String Pincode = String.Empty;
+        String Mobile = String.Empty;
+        String Email = String.Empty;
+        String Gender = String.Empty;
+        String ProfileImage = String.Empty;
+        String Ratings = String.Empty;
+        String imgName = String.Empty;
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                ID = reader["ID"].ToString();
+                Name = reader["Name"].ToString();
+                NickName = reader["NickName"].ToString();
+                Address = reader["Address"].ToString();
+                Pincode = reader["Pincode"].ToString();
+                Mobile = reader["Mobile"].ToString();
+                Email = reader["Email"].ToString();
+                Gender = reader["Gender"].ToString();
+                ProfileImage = reader["ProfileImage"].ToString();
+                imgName = reader["ProfileImage"].ToString();
+            }
+        }
+        con.Close();
+        reader.Close();
+    
+%>
 <div class="container">
         <div class="row">
             <div class="col-12">
@@ -51,7 +111,7 @@ Customer Profile | Electrify-Shop
                                                 <label style="font-weight:bold;">Name</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Kishan Jinjariya
+                                                <% Response.Write(Name); %>
                                             </div>
                                         </div>
                                         <hr />
@@ -61,7 +121,7 @@ Customer Profile | Electrify-Shop
                                                 <label style="font-weight:bold;">NickName</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Kishan
+                                                 <% Response.Write(NickName); %>
                                             </div>
                                         </div>
                                         <hr />
@@ -72,16 +132,16 @@ Customer Profile | Electrify-Shop
                                                 <label style="font-weight:bold;">Address</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                "Shakti Nivas", Chamunda Soc., Opp. Ranchhoddas Ashram, Kuvadava Road, Rajkot.
+                                                 <% Response.Write(Address); %>
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Pincod</label>
+                                                <label style="font-weight:bold;">Pincode</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                360003
+                                                 <% Response.Write(Pincode); %>
                                             </div> 
                                         </div>
                                         <hr />
@@ -90,7 +150,7 @@ Customer Profile | Electrify-Shop
                                                 <label style="font-weight:bold;">Email</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                kishan.speedtech@gmail.com
+                                                 <% Response.Write(Email); %>
                                             </div>
                                         </div>
                                         <hr />
@@ -99,7 +159,7 @@ Customer Profile | Electrify-Shop
                                                 <label style="font-weight:bold;">Gender</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Male
+                                                 <% Response.Write(Gender); %>
                                             </div>
                                         </div>
                                         <hr />
@@ -115,33 +175,34 @@ Customer Profile | Electrify-Shop
 					                    <form action="#" method="post">
 						                    <div class="form-group">
 							                    <label class="col-form-label">Your Name</label>
-							                    <input type="text" class="form-control" name="Name" required="" readonly="" value="Kishan Jinjariya">
+							                    <input type="text" class="form-control" name="Name" required="" readonly="" value="<% Response.Write(Name); %>" />
+						                        <input type="hidden" name="ID" value="<% Response.Write(ID); %>" />
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Your Nickname</label>
-							                    <input type="text" class="form-control" name="Nickname" required="">
+							                    <input type="text" class="form-control" name="Nickname" required="" value="<% Response.Write(NickName); %>">
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Address</label>
-							                    <input type="text" class="form-control" name="Address" required="">
+							                    <input type="text" class="form-control" name="Address" required="" value="<% Response.Write(Address); %>">
                     						    
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Pin Code</label>
-							                    <input type="text" class="form-control" name="Pincode"  maxlength="6" onkeypress='validate(event)'  required="">
+							                    <input type="text" class="form-control" name="Pincode" value="<% Response.Write(Pincode); %>"  maxlength="6" onkeypress='validate(event)'  required="">
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Mobile Number</label>
-							                    <input type="text" maxlength="10" onkeypress='validate(event)' class="form-control" name="Mobile" required="">
+							                    <input type="text" maxlength="10" onkeypress='validate(event)' value="<% Response.Write(Mobile); %>" class="form-control" name="Mobile" required="">
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Email</label>
-							                    <input type="email" class="form-control" name="Email" required="">
+							                    <input type="email" class="form-control" name="Email" value="<% Response.Write(Email); %>" required="">
 						                    </div>
 						                    <div class="form-group">
 							                    <label class="col-form-label">Gender</label><br />
-						                        <input type="radio" value="Male" name="Gender" checked="true" /><label class="col-form-label">Male</label>
-						                        <input type="radio" value="Female" name="Gender" /><label class="col-form-label">Female</label>
+						                        <input type="radio" value="Male" name="Gender" <% if(Gender == "Male") Response.Write("checked='checked'"); %> /><label class="col-form-label">Male</label>
+						                        <input type="radio" value="Female" name="Gender" <% if(Gender == "Female") Response.Write("checked='checked'"); %> /><label class="col-form-label">Female</label>
 						                    </div>		
 						                    <div>
 						                                    <label class="file">
@@ -192,7 +253,7 @@ Customer Profile | Electrify-Shop
 
 
 
-
+<% } %>
 
 
 

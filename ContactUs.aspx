@@ -64,7 +64,7 @@ Contact Us | Electrify Shop
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
 							<label class="col-form-label">E-mail</label>
-							<input type="email" class="form-control" name="Email" placeholder="" required="">
+							<input type="Email" class="form-control" name="Email" placeholder="" required="">
 						</div>
 					</div>
 					<div class="contact-me animated wow slideInUp form-group">
@@ -72,7 +72,7 @@ Contact Us | Electrify Shop
 						<textarea name="Message" class="form-control" placeholder="" required=""> </textarea>
 					</div>
 					<div class="contact-form">
-						<input type="submit" value="Submit">
+						<input type="submit" name="submit" value="Submit">
 					</div>
 				</div>
 			</form>
