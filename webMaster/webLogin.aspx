@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 
-Admin Login | Electrify Shop
+WebMaster Login | Electrify Shop
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
@@ -69,7 +69,7 @@ function validate(evt) {
 							<input type="password" class="form-control" placeholder=" " name="Password" required="">
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" name="submit" value="Log in">
+							<input type="submit" class="form-control" name="btnLogin" value="Log in">
 						</div>
 						
 						
@@ -87,7 +87,7 @@ function validate(evt) {
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form action="" method="post" >
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
 							<input type="text" class="form-control" placeholder=" " name="email" required="">
@@ -102,7 +102,7 @@ function validate(evt) {
 							<span id='message'></span>
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Change Password">
+							<input type="submit" class="form-control" name="chngPassword" value="Change Password">
 						</div>
 						<div class="sub-w3l">
 							

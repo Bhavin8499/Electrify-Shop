@@ -381,36 +381,8 @@ ul.multi-column-dropdown li a:hover {
     -ms-background-size: cover;
 }
 
-.carousel-item.item2 {
-    background: url(../images/b2.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
 
-.carousel-item.item3 {
-    background: url(../images/b3.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
 
-.carousel-item.item4 {
-    background: url(../images/b4.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
-
-.carousel-item.item4,
-.carousel-item.item3,
-.carousel-item.item2,
 .carousel-item.item1 {
     min-height: 640px;
 }

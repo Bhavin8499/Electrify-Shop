@@ -7,14 +7,16 @@ Home | Electrify Shop
 <!-- banner -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<!-- Indicators-->
+		<% String[] imgArrBanner = {"b1.jpg","b1.jpg","b1.jpg","b1.jpg"}; %>
 		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+		<% for (int i = 0; i < imgArrBanner.Length; i++)
+     {%>
+     <li data-target="#carouselExampleIndicators" data-slide-to="<% Response.Write(i); %>" <% if(i==0){ Response.Write("class=\"active\"");} %>></li>
+    <% } %>
+			
 		</ol>
 		<div class="carousel-inner">
-			<div class="carousel-item item1 active">
+			<div class="carousel-item item1 active" style="background:url(images/b1.jpg)  no-repeat center;">
 				<div class="container">
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
@@ -29,42 +31,30 @@ Home | Electrify Shop
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item item2">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>advanced
-								<span>Wireless</span> earbuds</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Best
-								<span>Headphone</span>
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item item3">
+			<div class="carousel-item item1" style="background:url(images/b2.jpg)">
 				<div class="container">
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
 							<p>Get flat
 								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">New
-								<span>Standard</span>
+							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
+								<span>Big</span>
+								Sale
 							</h3>
 							<a class="button2" href="product.html">Shop Now </a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item item4">
+			<div class="carousel-item item1" style="background:url(images/b3.jpg)">
 				<div class="container">
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get Now
-								<span>40%</span> Discount</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Today
-								<span>Discount</span>
+							<p>Get flat
+								<span>10%</span> Cashback</p>
+							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
+								<span>Big</span>
+								Sale
 							</h3>
 							<a class="button2" href="product.html">Shop Now </a>
 						</div>

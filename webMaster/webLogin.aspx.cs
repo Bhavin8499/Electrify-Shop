@@ -18,9 +18,13 @@ public partial class adminLogin : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.Form["Submit"] != null)
+        if (Request.Form["btnLogin"] != null)
         {
             doLogin();
+        }
+        else if (Request.Form["chngPassword"] != null)
+        {
+            doForgotPassword();
         }
     }
 
@@ -28,7 +32,7 @@ public partial class adminLogin : System.Web.UI.Page
     {
         String username = Request.Form["Email"];
         String password = Request.Form["Password"];
-        String query = "select * from Sellers where Email='" + username + "' and Password='" + password + "'";
+        String query = "select * from webMasters where Email='" + username + "' and Password='" + password + "'";
         con.Open();
         SqlCommand cmd = new SqlCommand(query, con);
         SqlDataReader reader = cmd.ExecuteReader();
@@ -36,10 +40,9 @@ public partial class adminLogin : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                Session["NickName"] = reader["NickName"].ToString();
                 Session["Email"] = reader["Email"].ToString();
-                Session["SellerID"] = reader["ID"].ToString();
-                Response.Write("<script>alert('Welcome " + Session["NickName"] + "'); window.location = 'admin/index.aspx';</script>");
+                Session["WebID"] = reader["ID"].ToString();
+                Response.Write("<script>alert('Welcome " + reader["Name"].ToString() + "'); window.location = 'admin/index.aspx';</script>");
                 //Response.Redirect("index.aspx");
             }
         }
@@ -47,6 +50,22 @@ public partial class adminLogin : System.Web.UI.Page
         {
             Response.Write("<script>alert('Please Enter Correct Username or Password');</script>");
         }
+    }
+
+    protected void doForgotPassword() {
+
+        String Email = Request.Form["email"].ToString();
+        String Password = Request.Form["Password"].ToString();
+        con.Open();
+        String query = "update webMasters set Password='"+Password+"' where Email = '"+Email+"' ";
+        SqlCommand cmd = new SqlCommand(query, con);
+        int affectedRow = cmd.ExecuteNonQuery();
+
+        if (affectedRow > 0)
+        {
+            Response.Write("<script>alert('Password Changed Successfully'); window.location='webLogin.aspx';</script>");
+        }
+        con.Close();
     }
 
 }

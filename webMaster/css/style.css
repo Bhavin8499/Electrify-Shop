@@ -5,7 +5,6 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
-
 #myform {
     text-align: center;
     padding: 5px;
@@ -209,7 +208,43 @@ input[type="submit"] {
 /*-- //top-header --*/
 
 /*-- header-bottom --*/
+.dropbtn11 {
+  color:white;
+ 
+}
 
+.dropdown11 {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdown-content11 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  
+}
+
+.dropdown-content11 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content11 a:hover {background-color: #f1f1f1}
+
+.dropdown11:hover .dropdown-content11 {
+  display: block;
+}
+
+.dropdown11:hover .dropbtn11 {
+  color:black;
+}
 /*-- search --*/
 
 .agileits_search input[type="search"] {
@@ -346,36 +381,8 @@ ul.multi-column-dropdown li a:hover {
     -ms-background-size: cover;
 }
 
-.carousel-item.item2 {
-    background: url(../images/b2.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
 
-.carousel-item.item3 {
-    background: url(../images/b3.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
 
-.carousel-item.item4 {
-    background: url(../images/b4.jpg) no-repeat center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-}
-
-.carousel-item.item4,
-.carousel-item.item3,
-.carousel-item.item2,
 .carousel-item.item1 {
     min-height: 640px;
 }
