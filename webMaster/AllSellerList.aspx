@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/webMaster/hfNoSidebar.master" AutoEventWireup="true" CodeFile="AllSellerList.aspx.cs" Inherits="webMaster_AllSellerList" Title="Untitled Page" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
+        <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 All Avaliable Sellers List
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
@@ -38,7 +38,7 @@ All Avaliable Sellers List
                                                     
                                                     <td style="width:200px;"><b><% Response.Write(reader["Name"].ToString()); %></b></td>
                                                     
-                                                    <td style="width:150px;"><b>Address :</b>$<% Response.Write(reader["Address"].ToString()); %><br />_____________________________<b><br />Pincode :</b>$<% Response.Write(reader["Pincode"].ToString()); %><br />_____________________________<br /><b>Mobile No :</b>$<% Response.Write(reader["Mobile"].ToString()); %></td>
+                                                    <td style="width:150px;"><b>Address :</b><% Response.Write(reader["Address"].ToString()); %><br />_____________________________<b><br />Pincode :</b>$<% Response.Write(reader["Pincode"].ToString()); %><br />_____________________________<br /><b>Mobile No :</b>$<% Response.Write(reader["Mobile"].ToString()); %></td>
                                                     
                                                     <td><b> Email :</b><% Response.Write(reader["Email"].ToString()); %></td>
                                                     <td style="width:150px;">

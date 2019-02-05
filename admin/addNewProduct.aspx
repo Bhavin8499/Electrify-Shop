@@ -62,7 +62,7 @@ function validate(evt) {
   border: solid 1px gray;
   ">
 							<option>Mobile Phone</option>
-							<option>Applinece</option>
+							<option>Appliance</option>
 							<option>Headphone</option>
 							<option>PC</option>
 							<option>Laptop</option>

@@ -138,6 +138,8 @@ Product Name | Electrify Shop
 							<i class="fas fa-retweet mr-3"></i>Cash On Delivery | Electrify Cash
 						</p>
 					</div>
+					<% if (Session["ID"] != null)
+        { %>
 					<div class="occasion-cart">
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 						    <form method="post">
@@ -150,6 +152,14 @@ Product Name | Electrify Shop
 						    </form>
 						</div>
 					</div>
+					<%}
+        else
+        { %>
+        <div class="product-single-w3l">
+						<p class="my-3">Please Login First To Add Product Into Cart <a href="LoginCustomer.aspx">Login Here</a></p>
+						</div>
+        
+					<%} %>
 				</div>
 			</div>
 		</div>

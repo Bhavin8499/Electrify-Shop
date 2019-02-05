@@ -42,7 +42,7 @@ public partial class CustomerProfile : System.Web.UI.Page
         {
             String ImgExt = Path.GetExtension(img1.FileName);
             String ImgName = NickName + "-" + proImgID.ToString() + "-" + 1 + ImgExt;
-            String FilePath = MapPath("../images/CustomerProfile/") + ImgName;
+            String FilePath = MapPath("images/CustomerProfile/") + ImgName;
             img1.SaveAs(FilePath);
             String query1 = "update Customers set ProfileImage='" + ImgName + "' where ID = " + ID;
             SqlCommand cmd1 = new SqlCommand(query1, con);

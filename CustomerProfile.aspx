@@ -85,7 +85,7 @@ Customer Profile | Electrify-Shop
                                     <div>
 						                
 						                <div>
-						                    <img src="images/user.jpg"  style="margin:5px; height:100px; border-radius:50%;"/>
+						                    <img src="images/CustomerProfile/<% Response.Write(ProfileImage); %>"  style="margin:5px; height:100px; border-radius:50%;"/>
 						                </div>
 						            </div>
                                 </div>                               
@@ -172,7 +172,7 @@ Customer Profile | Electrify-Shop
                                         
                                     <div>
 				                    <div class="modal-body" style="margin:30px;">
-					                    <form action="#" method="post">
+					                    <form action="#" method="post" enctype="multipart/form-data">
 						                    <div class="form-group">
 							                    <label class="col-form-label">Your Name</label>
 							                    <input type="text" class="form-control" name="Name" required="" readonly="" value="<% Response.Write(Name); %>" />
@@ -206,7 +206,7 @@ Customer Profile | Electrify-Shop
 						                    </div>		
 						                    <div>
 						                                    <label class="file">
-                                                              <input type="file" id="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
+                                                              <input type="file" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
                                                               <span class="file-custom"></span>
                                                             </label>
 						                                    <div>
