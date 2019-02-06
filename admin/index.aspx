@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="hfNoSidebar.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="admin_index" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="admin_index" Title="Untitled Page" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
@@ -49,7 +49,7 @@ Admin | Index
 					<div class="men-thumb-item text-center" >
 					
 						<% String[] imgArr = reader["Product_img"].ToString().Split('|');
-                        Response.Write("<img src='../images/product images/" + imgArr[0] + "' style='height:250px; width:auto;' alt=''>"); %>
+                        Response.Write("<img src='../images/products/" + imgArr[0] + "' style='height:250px; width:auto;' alt=''>"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 				    		<a href="single.html" class="link-product-add-cart">Quick View</a>
