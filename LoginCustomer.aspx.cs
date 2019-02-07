@@ -17,6 +17,10 @@ public partial class LoginCustomer : System.Web.UI.Page
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["ID"] != null)
+        {
+            Response.Write("<script>alert('You Are Already Logged In.'); history.go(-1);</script>");
+        } 
         if (Request.Form["submit"] != null)
         {
             doLogin();

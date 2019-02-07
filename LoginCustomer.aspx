@@ -3,7 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Login | Electrify Shop
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server"> 
+
+
+
 <script type="text/javascript">
 var check = function() {
   if (document.getElementById('Password').value ==
@@ -109,5 +112,6 @@ function validate(evt) {
 			</div>
 		</div>
 	</div>
+	
 </asp:Content>
 
