@@ -6,7 +6,12 @@ Add New Product | Admin
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-
+<%  if (Session["SellerID"] == null)
+    {
+        Response.Write("<script>alert('Please Login First To Add New Product'); window.location.href='../adminLogin.aspx';</script>");
+    }
+    else
+    { %>
 <script type="text/javascript">
 var check = function() {
   if (document.getElementById('Password').value ==
@@ -174,7 +179,7 @@ function validate(evt) {
 			
 	<!-- //modal -->
 									
-	
+	<% }//Else Part End Here %>
 
 </asp:Content>
 

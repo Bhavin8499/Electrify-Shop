@@ -6,9 +6,14 @@ WebMaster Login | Electrify Shop
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-
-
-
+<% 
+    if (Session["WebID"] != null)
+    {
+        Response.Write("<script>alert('You Are Already Logged In'); window.location='AddNewBanner.aspx';</script>");
+    }
+    else
+    {
+%>
 
 
 
@@ -55,8 +60,9 @@ function validate(evt) {
 			<div style="margin:30px;">
 				<div>
 					<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top:40px;">
-					<span>A</span>dmin
-                    <span>L</span>ogIn
+					<span>W</span>eb
+                    <span>M</span>aster
+                    <span>L</span>ogin
 				</div>
 				<div class="modal-body">
 					<form action="" method="post">
@@ -118,6 +124,8 @@ function validate(evt) {
 			</div>
 		</div>
 	</div>
+
+<% }//Else Part End here %>
 
 </asp:Content>
 

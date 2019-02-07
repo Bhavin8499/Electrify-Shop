@@ -7,58 +7,64 @@ Orders | Electrify Shop
 
 
 <%
-
-    String link1 = "";
-    String link2 = "";
-    String link3 = "";
-
-    String classLink1 = String.Empty;
-    String classLink2 = String.Empty;
-    String classLink3 = String.Empty;
-
-    if (Request.QueryString["pending"] != null)
+    if (Session["SellerID"] == null)
     {
-
-        link1 = "nav-link";
-        link2 = "nav-link";
-        link3 = "nav-link active";
-
-        classLink1 = "tab-pane fade";
-        classLink2 = "tab-pane fade";
-        classLink3 = "tab-pane fade show active";
-            
-    }
-    else if (Request.QueryString["deliverd"] != null)
-    {
-
-        link1 = "nav-link";
-        link2 = "nav-link active";
-        link3 = "nav-link";
-
-        classLink1 = "tab-pane fade";
-        classLink2 = "tab-pane fade show active";
-        classLink3 = "tab-pane fade";
-            
-        
+        Response.Write("<script>alert('Please Login First To Edit Product'); window.location.href='../adminLogin.aspx';</script>");
     }
     else
     {
-        link1 = "nav-link active";
-        link2 = "nav-link";
-        link3 = "nav-link";
 
-        classLink1 = "tab-pane fade show active";
-        classLink2 = "tab-pane fade";
-        classLink3 = "tab-pane fade";
-            
-    }
+        String link1 = "";
+        String link2 = "";
+        String link3 = "";
 
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-    
-    con.Open();
-    String query = "select * from CusOrder";// Where SellerID = 1";
-    SqlCommand cmd = new SqlCommand(query, con);
-    SqlDataReader reader = cmd.ExecuteReader();
+        String classLink1 = String.Empty;
+        String classLink2 = String.Empty;
+        String classLink3 = String.Empty;
+
+        if (Request.QueryString["pending"] != null)
+        {
+
+            link1 = "nav-link";
+            link2 = "nav-link";
+            link3 = "nav-link active";
+
+            classLink1 = "tab-pane fade";
+            classLink2 = "tab-pane fade";
+            classLink3 = "tab-pane fade show active";
+
+        }
+        else if (Request.QueryString["deliverd"] != null)
+        {
+
+            link1 = "nav-link";
+            link2 = "nav-link active";
+            link3 = "nav-link";
+
+            classLink1 = "tab-pane fade";
+            classLink2 = "tab-pane fade show active";
+            classLink3 = "tab-pane fade";
+
+
+        }
+        else
+        {
+            link1 = "nav-link active";
+            link2 = "nav-link";
+            link3 = "nav-link";
+
+            classLink1 = "tab-pane fade show active";
+            classLink2 = "tab-pane fade";
+            classLink3 = "tab-pane fade";
+
+        }
+
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+
+        con.Open();
+        String query = "select * from CusOrder";// Where SellerID = 1";
+        SqlCommand cmd = new SqlCommand(query, con);
+        SqlDataReader reader = cmd.ExecuteReader();
 %>
 
 
@@ -97,29 +103,29 @@ Orders | Electrify Shop
                                 <div class="tab-content ml-1" id="myTabContent">
                                     <div class="<% Response.Write(classLink1); %>" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                                     <%
-                                           if (reader.HasRows)
-                                           {
-                                               while (reader.Read())
-                                               {
-                                                   String proID = reader["ProID"].ToString();
-                                                   String cusID = reader["CusID"].ToString();
-                                                   String Price = reader["Price"].ToString();
-                                                   String Qty = reader["Qty"].ToString();
-                                                  /* String userName = String.Empty;
-                                                   String userName = String.Empty;
-                                                   String userName = String.Empty;
-                                                   String userName = String.Empty;
-                                                   String userName = String.Empty;
-                                                   */
-                                                   int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
-                                                   String queryPro = "select * from product where ID =" + proID;
-                                                   SqlCommand cmdPro = new SqlCommand(queryPro, con);
-                                                   SqlDataReader readerProduct = cmdPro.ExecuteReader();
-                                                   if (readerProduct.HasRows)
-                                                   {
-                                                       while (readerProduct.Read())
-                                                       {
-                                                           String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            String proID = reader["ProID"].ToString();
+            String cusID = reader["CusID"].ToString();
+            String Price = reader["Price"].ToString();
+            String Qty = reader["Qty"].ToString();
+            /* String userName = String.Empty;
+             String userName = String.Empty;
+             String userName = String.Empty;
+             String userName = String.Empty;
+             String userName = String.Empty;
+             */
+            int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+            String queryPro = "select * from product where ID =" + proID;
+            SqlCommand cmdPro = new SqlCommand(queryPro, con);
+            SqlDataReader readerProduct = cmdPro.ExecuteReader();
+            if (readerProduct.HasRows)
+            {
+                while (readerProduct.Read())
+                {
+                    String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
                                                        %>
                                                                 <div style="margin:50px;">
                                                 <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
@@ -140,22 +146,22 @@ Orders | Electrify Shop
                                                 </div>
                                              </div>
                                                     <%       }
-                                                   }
-                                                   else
-                                                   {
-                                                       Response.Write("There Is No Current Orders");
-                                                   }
-                                                   
-                                                   
-                                                    
-                                                   
-                                               }
+            }
+            else
+            {
+                Response.Write("There Is No Current Orders");
+            }
 
-                                           }
-                                           else
-                                           {
-                                               Response.Write("There Is No Current Orders");
-                                           }
+
+
+
+        }
+
+    }
+    else
+    {
+        Response.Write("There Is No Current Orders");
+    }
                                            
                                            
                                            
@@ -189,34 +195,34 @@ Orders | Electrify Shop
                                     
                                     <div class="<% Response.Write(classLink2); %>" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                                        <%
-                                           reader.Close();
-                                           reader = cmd.ExecuteReader();
-                                           if (reader.HasRows)
-                                           {
+    reader.Close();
+    reader = cmd.ExecuteReader();
+    if (reader.HasRows)
+    {
 
-                                               while (reader.Read())
-                                               {
-                                                   if (reader["Status"].ToString() != "Delivered")
-                                                   {
-                                                       String proID = reader["ProID"].ToString();
-                                                       String cusID = reader["CusID"].ToString();
-                                                       String Price = reader["Price"].ToString();
-                                                       String Qty = reader["Qty"].ToString();
-                                                       /* String userName = String.Empty;
-                                                        String userName = String.Empty;
-                                                        String userName = String.Empty;
-                                                        String userName = String.Empty;
-                                                        String userName = String.Empty;
-                                                        */
-                                                       int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
-                                                       String queryPro = "select * from product where ID =" + proID;
-                                                       SqlCommand cmdPro = new SqlCommand(queryPro, con);
-                                                       SqlDataReader readerProduct = cmdPro.ExecuteReader();
-                                                       if (readerProduct.HasRows)
-                                                       {
-                                                           while (readerProduct.Read())
-                                                           {
-                                                               String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+        while (reader.Read())
+        {
+            if (reader["Status"].ToString() != "Delivered")
+            {
+                String proID = reader["ProID"].ToString();
+                String cusID = reader["CusID"].ToString();
+                String Price = reader["Price"].ToString();
+                String Qty = reader["Qty"].ToString();
+                /* String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 */
+                int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+                String queryPro = "select * from product where ID =" + proID;
+                SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                if (readerProduct.HasRows)
+                {
+                    while (readerProduct.Read())
+                    {
+                        String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
                                                        %>
                                         <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
@@ -236,10 +242,10 @@ Orders | Electrify Shop
                                             </div>
                                          </div>
                                                   <% }
-                                                       }
-                                                   }
-                                               }
-                                           } 
+                }
+            }
+        }
+    } 
                                            
                                         %>
                                         <!--
@@ -264,36 +270,36 @@ Orders | Electrify Shop
                                     </div>
                                     <div class="<% Response.Write(classLink3); %>" id="pending" role="tabpanel" aria-labelledby="pending-tab">
                                         <%
-                                          reader.Close();
-                                          reader = cmd.ExecuteReader();
+    reader.Close();
+    reader = cmd.ExecuteReader();
 
-                                          if (reader.HasRows)
-                                          {
-                                              while (reader.Read())
-                                              {
-                                                  if (reader["Status"].ToString() != "Delivered")
-                                                  {
-                                                      if (reader["Approved"].ToString() != "Approved")
-                                                      {
-                                                          String proID = reader["ProID"].ToString();
-                                                          String cusID = reader["CusID"].ToString();
-                                                          String Price = reader["Price"].ToString();
-                                                          String Qty = reader["Qty"].ToString();
-                                                          /* String userName = String.Empty;
-                                                           String userName = String.Empty;
-                                                           String userName = String.Empty;
-                                                           String userName = String.Empty;
-                                                           String userName = String.Empty;
-                                                           */
-                                                          int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
-                                                          String queryPro = "select * from product where ID =" + proID;
-                                                          SqlCommand cmdPro = new SqlCommand(queryPro, con);
-                                                          SqlDataReader readerProduct = cmdPro.ExecuteReader();
-                                                          if (readerProduct.HasRows)
-                                                          {
-                                                              while (readerProduct.Read())
-                                                              {
-                                                                  String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            if (reader["Status"].ToString() != "Delivered")
+            {
+                if (reader["Approved"].ToString() != "Approved")
+                {
+                    String proID = reader["ProID"].ToString();
+                    String cusID = reader["CusID"].ToString();
+                    String Price = reader["Price"].ToString();
+                    String Qty = reader["Qty"].ToString();
+                    /* String userName = String.Empty;
+                     String userName = String.Empty;
+                     String userName = String.Empty;
+                     String userName = String.Empty;
+                     String userName = String.Empty;
+                     */
+                    int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+                    String queryPro = "select * from product where ID =" + proID;
+                    SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                    SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                    if (readerProduct.HasRows)
+                    {
+                        while (readerProduct.Read())
+                        {
+                            String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
                                         %>
                                         <div style="margin: 50px;">
                                             <div style="width: 98%; box-shadow: -1px 1px 1px 1px Gray;" class="table-responsive">
@@ -337,11 +343,11 @@ Orders | Electrify Shop
                                             </div>
                                         </div>
                                         <%                }
-                                                          }
-                                                      }
-                                                  }
-                                              }
-                                          }
+                    }
+                }
+            }
+        }
+    }
                                         %>
                                     </div>
                                 </div>
@@ -354,7 +360,7 @@ Orders | Electrify Shop
     </div>
     </div>
 
-
+<% } // Else Part End Here %>
 
 
 

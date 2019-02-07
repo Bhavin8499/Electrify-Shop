@@ -18,6 +18,10 @@ public partial class adminLogin : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["WebID"] != null)
+        {
+            Response.Write("<script>alert('You Are Already Logged In'); history.go(-1);</script>");
+        }
         if (Request.Form["btnLogin"] != null)
         {
             doLogin();

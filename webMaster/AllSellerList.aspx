@@ -6,11 +6,17 @@ All Avaliable Sellers List
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 
 <%
-    String query = "select * from Sellers Order By ID DESC";
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-    con.Open();
-    SqlCommand cmd = new SqlCommand(query, con);
-    SqlDataReader reader = cmd.ExecuteReader();
+    if (Session["WebID"] == null)
+    {
+        Response.Write("<script>alert('Please Login First To See All Product'); window.location='webLogin.aspx';</script>");
+    }
+    else
+    {
+        String query = "select * from Sellers Order By ID DESC";
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+        con.Open();
+        SqlCommand cmd = new SqlCommand(query, con);
+        SqlDataReader reader = cmd.ExecuteReader();
      %>
 
 <div class="container">
@@ -51,7 +57,7 @@ All Avaliable Sellers List
                                          </div>   
                                                   
                                               <%
-                                              }
+    }
                                           } %>
                                        
                                                                               
@@ -60,6 +66,6 @@ All Avaliable Sellers List
                                     </div>
                                     </div>
                                    
-
+<% } // Else Part End Here %>
 </asp:Content>
 

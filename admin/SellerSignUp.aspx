@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="hfNoSidebar.master" AutoEventWireup="true" CodeFile="SellerSignUp.aspx.cs" Inherits="CustomerSignUp" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="../hfNoSidebar.master" AutoEventWireup="true" CodeFile="SellerSignUp.aspx.cs" Inherits="CustomerSignUp" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Customer Sign Up | Electrify Shop

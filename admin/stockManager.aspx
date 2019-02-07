@@ -6,11 +6,19 @@ Stock Manager | Electrify Shop
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 
 <%
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-    con.Open();
-    String query = "select * from Product where SellerID = 1";
-    SqlCommand cmd = new SqlCommand(query, con);
-    SqlDataReader reader = cmd.ExecuteReader();
+    
+    if (Session["SellerID"] == null)
+    {
+        Response.Write("<script>alert('Please Login First To Edit Product'); window.location.href='../adminLogin.aspx';</script>");
+    }
+    else
+    {
+
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+        con.Open();
+        String query = "select * from Product where SellerID = 1";
+        SqlCommand cmd = new SqlCommand(query, con);
+        SqlDataReader reader = cmd.ExecuteReader();
  %>
 
 
@@ -30,7 +38,7 @@ Stock Manager | Electrify Shop
                                           {
                                               while (reader.Read())
                                               {
-                                                    String[] imgArr = reader["Product_img"].ToString().Split('|');
+                                                  String[] imgArr = reader["Product_img"].ToString().Split('|');
                                                %>
                                                   <div style="margin:50px;">
                                             <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
@@ -58,7 +66,7 @@ Stock Manager | Electrify Shop
                                          </div>   
                                                   
                                               <%
-                                              }
+    }
                                           } %>
                                        
                                                                               
@@ -122,7 +130,7 @@ jQuery(document).ready(function(){
              
 
 
-
+<% } //Else part End Here %>
 
 </asp:Content>
 

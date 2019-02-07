@@ -6,43 +6,66 @@ Edit Product | Electrify Shop
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
+<style>
+* {
+  box-sizing: border-box;
+}
 
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
 <%
-
-    String proID = Request.QueryString["proID"] != null? Request.QueryString["proID"].ToString() : "1"  ;
-
-    String[] imgName = new String[10];
-    String proName = String.Empty;
-    String Type = String.Empty;
-    String Price = String.Empty;
-    String Mrp = String.Empty;
-    String Desc = String.Empty;
-    String KeyWord = String.Empty;
-    String BrandName = String.Empty;
-    String Qty = String.Empty;
-    
-    String query = "select * from Product where ID="+proID;
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-    con.Open();
-    SqlCommand cmd = new SqlCommand(query, con);
-    SqlDataReader reader = cmd.ExecuteReader();
-    if (reader.HasRows)
+    if (Session["SellerID"] == null)
     {
-        while (reader.Read())
-        {
-
-            imgName = reader["Product_img"].ToString().Split('|');
-            proName = reader["Name"].ToString();
-            Type = reader["Type"].ToString();
-            Price = reader["Price"].ToString();
-            Mrp = reader["MRP"].ToString();
-            Desc = reader["Description"].ToString();
-            KeyWord = reader["Keyword"].ToString();
-            BrandName = reader["BrandName"].ToString();
-            Qty = reader["Qty"].ToString();
-            
-        }
+        Response.Write("<script>alert('Please Login First To Edit Product'); window.location.href='../adminLogin.aspx';</script>");
     }
+    else
+    {
+
+        String proID = Request.QueryString["proID"] != null ? Request.QueryString["proID"].ToString() : "0";
+
+        String[] imgName = new String[10];
+        String proName = String.Empty;
+        String Type = String.Empty;
+        String Price = String.Empty;
+        String Mrp = String.Empty;
+        String Desc = String.Empty;
+        String KeyWord = String.Empty;
+        String BrandName = String.Empty;
+        String Qty = String.Empty;
+
+        String query = "select * from Product where ID=" + proID;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+        con.Open();
+        SqlCommand cmd = new SqlCommand(query, con);
+        SqlDataReader reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+
+                imgName = reader["Product_img"].ToString().Split('|');
+                proName = reader["Name"].ToString();
+                Type = reader["Type"].ToString();
+                Price = reader["Price"].ToString();
+                Mrp = reader["MRP"].ToString();
+                Desc = reader["Description"].ToString();
+                KeyWord = reader["Keyword"].ToString();
+                BrandName = reader["BrandName"].ToString();
+                Qty = reader["Qty"].ToString();
+
+            }
+        }
     
     
     
@@ -92,6 +115,7 @@ function validate(evt) {
 						<div class="form-group">
 							<label class="col-form-label">Product Name</label>
 							<input type="text" class="form-control" name="product_name" value="<% Response.Write(proName); %>" required="">
+						    <input type="hidden" value="<% Response.Write(proID); %>" name="ProID" />
 						</div>
 						<div class="form-group">
 						    <label class="col-form-label">Product Type</label>
@@ -116,10 +140,7 @@ function validate(evt) {
 							<option>Software</option>
 							</select>
 						</div>
-						<div class="form-group">
-							<label class="col-form-label">Product Type</label>
-							<input type="text" class="form-control" name="product_type"  required="">
-						</div>
+						
 						<div class="form-group">
 							<label class="col-form-label">Price</label>
 							<input type="text" class="form-control" name="price" value="<% Response.Write(Price); %>" required="" onkeypress='validate(event)'>
@@ -131,7 +152,7 @@ function validate(evt) {
 						
 						<div class="form-group">
 							<label class="col-form-label">Description</label>
-							<textarea class="form-control" name="desc" style="min-height:150px;" value="<% Response.Write(Desc); %>" required=""></textarea>						</div>
+							<textarea class="form-control" name="desc" style="min-height:150px;" required=""><% Response.Write(Desc); %></textarea>						</div>
 						<div class="form-group">
 							<label class="col-form-label">Keyword</label>
 							<input type="text" class="form-control" name="key" value="<% Response.Write(KeyWord); %>" required="">
@@ -145,6 +166,11 @@ function validate(evt) {
 							<input type="number" class="form-control" name="qty"  min="0"  value="<% Response.Write(Qty); %>" required="">
 						</div>
 						
+						
+						<label style="color:Red;">* It Will Remove Old Images</label>
+						<div class="row">
+						
+						<div class="column">
 						<div>
 						    <label class="file">
                               <input type="file" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
@@ -163,7 +189,9 @@ function validate(evt) {
                             };
                             </script>
 						</div>
+						</div>
 						
+						<div class="column">
 						<div>
 						    <label class="file">
                               <input type="file" id="file1"  name="file1" aria-label="File browser example" accept="image/*" onchange="loadFile1(event)">
@@ -182,7 +210,9 @@ function validate(evt) {
                             };
                             </script>
 						</div>
+						</div>
 						
+						<div class="column">
 						<div>
 						    <label class="file">
                               <input type="file" id="file2" name="file2" aria-label="File browser example" accept="image/*" onchange="loadFile2(event)">
@@ -201,10 +231,11 @@ function validate(evt) {
                             };
                             </script>
 						</div>
-						
+						</div>
+						</div>
 						
 						<div class="right-w3l">
-							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Register" />
+							<input type="submit" class="form-control" id="btnSubmit" name="btnEditProduct" value="Edit Product" />
 						</div>
 						
 						
@@ -213,6 +244,20 @@ function validate(evt) {
 					</form>
 				</div>
 			</div>
+			<div class="row" style="text-align:center">
+			<% for (int i = 0; i < imgName.Length; i++)
+      {%>
+      
+     <div class="column">
+    <img src="../images/products/<% Response.Write(imgName[i]); %>"  style="width:auto; max-height:300px;">
+  </div>
+      
+      
+     <% } %>
+			</div>
+  
+	<% } //Else Condition End Here%>		
+			
 
 </asp:Content>
 

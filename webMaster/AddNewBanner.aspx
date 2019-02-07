@@ -3,7 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-
+<% if (Session["WebID"] == null)
+   {
+       Response.Write("<script>alert('Please Login First To Add New Banner'); window.location='webLogin.aspx';</script>");
+   }
+   else
+   { %>
     <div>
 		<div>
 			<div style="margin:30px;">
@@ -64,6 +69,7 @@
 </div>
 </div>
 </div>
+<% } // Else Part End here %>
 
 </asp:Content>
 

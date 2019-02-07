@@ -5,69 +5,74 @@ Profile | Electrify Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 <%
-    
-    String firstClass = "";
-    String secondClass = "";
-    String navBarItem1 = "";
-    String navBarItem2 = "";
-    if (Request.QueryString["edit"] != null)
-    {
-        firstClass = "tab-pane fade";
-        secondClass = "tab-pane fade show active";
-        navBarItem1 = "nav-link";
-        navBarItem2 = "nav-link active";
-    }
-    else
-    {
-        secondClass = "tab-pane fade";
-        firstClass = "tab-pane fade show active";
-        navBarItem2 = "nav-link";
-        navBarItem1 = "nav-link active";
-    }
-
-
     if (Session["SellerID"] == null)
     {
-        Response.Write("<script>alert('Please Login To Check Your Profile'); window.location = '../adminLogin.aspx';</script>");
+        Response.Write("<script>alert('Please Login First To Edit Product'); window.location.href='../adminLogin.aspx';</script>");
     }
     else
     {
-        string query = "select * from Sellers where ID = " + Session["SellerID"].ToString();
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-        con.Open();
-        SqlCommand cmd = new SqlCommand(query, con);
-        SqlDataReader reader = cmd.ExecuteReader();
-
-        String ID = String.Empty;
-        String Name = String.Empty;
-        String NickName = String.Empty;
-        String Address = String.Empty;
-        String Pincode = String.Empty;
-        String Mobile = String.Empty;
-        String Email = String.Empty;
-        String Gender = String.Empty;
-        String ProfileImage = String.Empty;
-        String Ratings = String.Empty;
-        String imgName = String.Empty;
-        if (reader.HasRows)
+        String firstClass = "";
+        String secondClass = "";
+        String navBarItem1 = "";
+        String navBarItem2 = "";
+        if (Request.QueryString["edit"] != null)
         {
-            while (reader.Read())
-            {
-                ID = reader["ID"].ToString();
-                Name = reader["Name"].ToString();
-                NickName = reader["NickName"].ToString();
-                Address = reader["Address"].ToString();
-                Pincode = reader["Pincode"].ToString();
-                Mobile = reader["Mobile"].ToString();
-                Email = reader["Email"].ToString();
-                Gender = reader["Gender"].ToString();
-                ProfileImage = reader["ProfileImage"].ToString();
-                Ratings = reader["Ratings"].ToString();
-                imgName = reader["ProfileImage"].ToString();
-            }
+            firstClass = "tab-pane fade";
+            secondClass = "tab-pane fade show active";
+            navBarItem1 = "nav-link";
+            navBarItem2 = "nav-link active";
         }
-        con.Close();
-        reader.Close();
+        else
+        {
+            secondClass = "tab-pane fade";
+            firstClass = "tab-pane fade show active";
+            navBarItem2 = "nav-link";
+            navBarItem1 = "nav-link active";
+        }
+
+
+        if (Session["SellerID"] == null)
+        {
+            Response.Write("<script>alert('Please Login To Check Your Profile'); window.location = '../adminLogin.aspx';</script>");
+        }
+        else
+        {
+            string query = "select * from Sellers where ID = " + Session["SellerID"].ToString();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            String ID = String.Empty;
+            String Name = String.Empty;
+            String NickName = String.Empty;
+            String Address = String.Empty;
+            String Pincode = String.Empty;
+            String Mobile = String.Empty;
+            String Email = String.Empty;
+            String Gender = String.Empty;
+            String ProfileImage = String.Empty;
+            String Ratings = String.Empty;
+            String imgName = String.Empty;
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    ID = reader["ID"].ToString();
+                    Name = reader["Name"].ToString();
+                    NickName = reader["NickName"].ToString();
+                    Address = reader["Address"].ToString();
+                    Pincode = reader["Pincode"].ToString();
+                    Mobile = reader["Mobile"].ToString();
+                    Email = reader["Email"].ToString();
+                    Gender = reader["Gender"].ToString();
+                    ProfileImage = reader["ProfileImage"].ToString();
+                    Ratings = reader["Ratings"].ToString();
+                    imgName = reader["ProfileImage"].ToString();
+                }
+            }
+            con.Close();
+            reader.Close();
  %>
 
 
@@ -256,7 +261,8 @@ Profile | Electrify Shop
         </div>
     </div>
 
-<%} %>
+<%}
+    } // Else Part End Here%>
 
 
 </asp:Content>
