@@ -259,7 +259,9 @@ About Us | Electrify-shop
     margin-bottom: 17px;
 }
 
-.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+.btn{ border-radius: 10%; width:35px; height:35px; line-height:22px;  }
+
+@fa-stack-overflow: #fe7a15;
 
 </style>
 
@@ -272,30 +274,33 @@ About Us | Electrify-shop
 
                 </div>
                 <div class="avatar">
-                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                    <img alt="" src="images/BhavinProfilePic.png">
                 </div>
                 <div class="info">
                     <div class="title">
                         <a target="_blank" href="https://scripteden.com/">Bhavin Sanchaniya</a>
-                    </div>
-                    <div class="desc">Passionate designer</div>
-                    <div class="desc">Curious developer</div>
-                    <div class="desc">Tech geek</div>
-                </div>
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                    </div><br />
+					<div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>					
+                </div><br />
+                <div class="bottom" style="background-color:#38a4ff; padding:4px;">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/SanchaniyaBhav1">
                         <i class="fa fa-twitter"></i>
                     </a>
                     <a class="btn btn-danger btn-sm" rel="publisher"
-                       href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
+                       href="https://plus.google.com/111610564764014992243">
+                        <i class="fa fa-google"></i>
                     </a>
                     <a class="btn btn-primary btn-sm" rel="publisher"
-                       href="https://plus.google.com/shahnuralam">
+                       href="https://www.facebook.com/bhavin.sanchaniya.5" >
                         <i class="fa fa-facebook"></i>
                     </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
+                    <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://stackoverflow.com/users/10429259/bhavin-sanchaniya">
+                        <i class="fa fa-stack-overflow" style="color:#fe7a15;"></i>
+                    </a>
+                    <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://stackoverflow.com/users/10429259/bhavin-sanchaniya">
+                        <i class="fa fa-youtube-play" style="color:#e52d27;"></i>
                     </a>
                 </div>
             </div>
@@ -309,20 +314,17 @@ About Us | Electrify-shop
 
                 </div>
                 <div class="avatar">
-                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                    <img alt="" src="images/KishanProfile.jpg">
                 </div>
                 <div class="info">
-                    <div class="title" >
+                    <div class="title">
                         <a target="_blank" href="https://scripteden.com/">Kishan Jinjariya</a>
-                    </div>
-                    <div class="desc">Passionate designer</div>
-                    <div class="desc">Curious developer</div>
-                    <div class="desc">Tech geek</div>
-                </div>
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                        <i class="fa fa-twitter"></i>
-                    </a>
+                    </div><br />
+                  <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>		
+                </div><br />
+                <div class="bottom" style="background-color:#38a4ff; padding:4px;">
                     <a class="btn btn-danger btn-sm" rel="publisher"
                        href="https://plus.google.com/+ahmshahnuralam">
                         <i class="fa fa-google-plus"></i>
@@ -330,9 +332,6 @@ About Us | Electrify-shop
                     <a class="btn btn-primary btn-sm" rel="publisher"
                        href="https://plus.google.com/shahnuralam">
                         <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
                     </a>
                 </div>
             </div>
