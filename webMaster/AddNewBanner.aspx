@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/webMaster/hfNoSidebar.master" AutoEventWireup="true" CodeFile="AddNewBanner.aspx.cs" Inherits="webMaster_AddNewBanner" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/webMaster/hfNoSidebar.master" AutoEventWireup="true" CodeFile="AddNewBanner.aspx.cs" Inherits="webMaster_AddNewBanner" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 </asp:Content>
@@ -36,7 +36,7 @@
 						                    </div>
 						                    <div>
 						                                    <label class="file">
-                                                              <input type="file" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
+                                                              <input type="file" class="form-control" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">
                                                               <span class="file-custom"></span>
                                                             </label>
 						                                    <div>

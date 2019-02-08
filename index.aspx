@@ -7,12 +7,25 @@ Home | Electrify Shop
 <!-- banner -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<!-- Indicators-->
-		<% String[] imgArrBanner = {"b1.jpg","b1.jpg","b1.jpg","b1.jpg"}; %>
+		<%
+            SqlConnection conBan = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            conBan.Open();
+            String queryBane = @"select * from Banners";
+            SqlCommand cmdBan = new SqlCommand(queryBane, conBan);
+            SqlDataReader readerBanner = cmdBan.ExecuteReader(); %>
 		<ol class="carousel-indicators">
-		<% for (int i = 0; i < imgArrBanner.Length; i++)
-     {%>
+
+		<%   if (readerBanner.HasRows)
+       {
+           int i = 0;
+           while (readerBanner.Read())
+           {%>
      <li data-target="#carouselExampleIndicators" data-slide-to="<% Response.Write(i); %>" <% if(i==0){ Response.Write("class=\"active\"");} %>></li>
-    <% } %>
+    <% i++;
+           }
+       }
+       readerBanner.Close();
+       readerBanner = cmdBan.ExecuteReader();%>
 			
 		</ol>
 		<div class="carousel-inner">

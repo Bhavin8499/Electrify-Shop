@@ -40,7 +40,15 @@ public partial class webMaster_AddNewBanner : System.Web.UI.Page
         String FilePath = MapPath("../images/Banners/") + ImgName;
         img1.SaveAs(FilePath);
 
-        con.Open();
+        using (var cmd = con.CreateCommand())
+        {
+            con.Open();
+            cmd.CommandText = "insert into Banners values ('" + Line1 + "','" + Line2 + "','" + QueryString + "','" + ImgName + "')";
+
+            cmd.ExecuteNonQuery();
+        }
+
+      /*  con.Open();
         String query = "insert into Banners values ('" + Line1 + "','" + Line2 + "','" + QueryString + "','" + ImgName + "')";
         SqlCommand cmd = new SqlCommand(query, con);
         int affectedRows = cmd.ExecuteNonQuery();
@@ -48,7 +56,7 @@ public partial class webMaster_AddNewBanner : System.Web.UI.Page
         if (affectedRows > 0)
         {
             Response.Write("<script>alert('Banner Is Added Successfully'); window.location='AddNewBanner.aspx';</script>");
-        }
+        }*/
     }
 
 }
