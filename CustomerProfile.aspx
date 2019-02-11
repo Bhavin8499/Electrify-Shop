@@ -28,7 +28,7 @@ Customer Profile | Electrify-Shop
     
    
 
-    if (Session["ID"] != null)
+    if (Session["ID"] == null)
     {
         Response.Write("<script>alert('Please Login To Check Your Profile'); window.location = 'LoginCustomer.aspx';</script>");
     }

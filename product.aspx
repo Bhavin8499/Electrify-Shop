@@ -7,71 +7,55 @@
 
 <!-- banner -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		<!-- Indicators-->
+			<!-- Indicators-->
+		<%
+            SqlConnection conBan = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            conBan.Open();
+            String queryBane = @"select * from Banners";
+            SqlCommand cmdBan = new SqlCommand(queryBane, conBan);
+            SqlDataReader readerBanner = cmdBan.ExecuteReader(); %>
 		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+		<%   if (readerBanner.HasRows)
+       {
+           int i = 0;
+           while (readerBanner.Read())
+           {%>
+     <li data-target="#carouselExampleIndicators" data-slide-to="<% Response.Write(i); %>" <% if(i==0){ Response.Write("class=\"active\"");} %>></li>
+    <% i++;
+           }
+       }
+       readerBanner.Close();
+      %>
+			
 		</ol>
 		<div class="carousel-inner">
-			<div class="carousel-item item1 active">
+		<%
+ 		    readerBanner = cmdBan.ExecuteReader();
+     if (readerBanner.HasRows)
+     { int i=0;
+         while (readerBanner.Read())
+         { String ClassName= "carousel-item item1";
+             if(i==0)
+            {
+             ClassName = "carousel-item item1 active";
+            }%>
+             <div class=" <% Response.Write(ClassName); %>" style="background:url(images/Banners/<% Response.Write(readerBanner["Image"].ToString()); %>) no-repeat center ; background-size: cover;">
 				<div class="container">
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get flat
-								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
-								<span>Big</span>
-								Sale
+							<p><% Response.Write(readerBanner["Line1"].ToString()); %></p>
+							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"><% Response.Write(readerBanner["Line1"].ToString()); %>
 							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
+							<a class="button2" href="product.aspx">Shop Now </a>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="carousel-item item2">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>advanced
-								<span>Wireless</span> earbuds</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Best
-								<span>Headphone</span>
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item item3">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get flat
-								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">New
-								<span>Standard</span>
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item item4">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get Now
-								<span>40%</span> Discount</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Today
-								<span>Discount</span>
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
+			</div>		
+        <% i++;
+         }
+     }     %>
+			
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -84,7 +68,6 @@
 	</div>
 	<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top:20px;">
 				<span>O</span>ur
-				<span>N</span>ew
 				<span>P</span>roducts
 	</h3>
 	<center>
@@ -96,6 +79,10 @@
         {
             query = "Select top 9 * from Product where Type = '" + Request.QueryString["Type"]+"'";
         }
+        else if (Request.QueryString["searchQuery"] != null)
+        {
+            query = "Select top 9 * from Product where name like ('%" + Request.QueryString["searchQuery"] + "%')";
+        }  
         else
         {
             query = "select top 9 * from Product";
@@ -107,7 +94,7 @@
             //Products
             int LoopCounter = 1;
             while (reader.Read())
-            {                
+            {
                 if (LoopCounter == 1)
                 {%>
                     <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4" style="width:98%">
@@ -140,42 +127,35 @@
 							<del>$<% Response.Write(reader["MRP"].ToString()); %></del>
 						</div>
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out" style="width:50%;">
-							<form action="#" method="post">
-							<fieldset>
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="add" value="1" />
-								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="OPPO A37f" />
-								<input type="hidden" name="amount" value="230.00" />
-								<input type="hidden" name="discount_amount" value="1.00" />
-								<input type="hidden" name="currency_code" value="USD" />
-								<input type="hidden" name="return" value=" " />
-    							<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button btn" />
-							</fieldset>
+							<form action="" method="post">
+							<input type="hidden" name="ProID" value="<% Response.Write(reader["ID"].ToString()); %>" />
+								<input type="submit" name="addToCart" value="Add to cart" class="button btn" />
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
         <%
-            LoopCounter++;
-            if (LoopCounter == 4)
-            {%>
+        LoopCounter++;
+        if (LoopCounter == 4)
+        {%>
                 </div>
                 </div>
                
             <%
-                LoopCounter = 1; 
-             }
-          }
+        LoopCounter = 1;
+        }
+            }
             if (LoopCounter != 4)
             {%>
               </div>
               </div>  
             <%}
-        }   
-	    
+        }
+        else
+        {
+            Response.Write("No Product Found");
+        }
 	%>
 	</center>
 	<!-- //banner -->

@@ -68,7 +68,7 @@ public partial class PlaceOrder : System.Web.UI.Page
                             SellerID = readerProduct["SellerID"].ToString();
                         }
                     }
-                    String queryInsert = "insert into CusOrder values (" + CusID + "," + ProID + ", " + SellerID + "," + Price + "," + Date + ", '" + Message + "','"+Status+"','','" + Name + "','" + Address + "', " + Pincode + ", " + MobileNo + ", '" + Email + "',' " + PayType + "', " + qty + ")";
+                    String queryInsert = "insert into CusOrder values (" + CusID + "," + ProID + ", " + SellerID + "," + Price + "," + Date + ", '" + Message + "','"+Status+"','','" + Name + "','" + Address + "', " + Pincode + ", " + MobileNo + ", '" + Email + "',' " + PayType + "', " + qty + ",'Remain')";
                     SqlCommand insertProductCmd = new SqlCommand(queryInsert, con);
                     insertProductCmd.ExecuteNonQuery();
 

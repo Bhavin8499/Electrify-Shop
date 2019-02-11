@@ -25,55 +25,36 @@ Home | Electrify Shop
            }
        }
        readerBanner.Close();
-       readerBanner = cmdBan.ExecuteReader();%>
+      %>
 			
 		</ol>
 		<div class="carousel-inner">
-			<div class="carousel-item item1 active" style="background:url(images/b1.jpg)  no-repeat center;">
+		<%
+ 		    readerBanner = cmdBan.ExecuteReader();
+     if (readerBanner.HasRows)
+     { int i=0;
+         while (readerBanner.Read())
+         { String ClassName= "carousel-item item1";
+             if(i==0)
+            {
+             ClassName = "carousel-item item1 active";
+            }%>
+             <div class=" <% Response.Write(ClassName); %>" style="background:url(images/Banners/<% Response.Write(readerBanner["Image"].ToString()); %>) no-repeat center ; background-size: cover;">
 				<div class="container">
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get flat
-								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
-								<span>Big</span>
-								Sale
+							<p><% Response.Write(readerBanner["Line1"].ToString()); %></p>
+							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"><% Response.Write(readerBanner["Line1"].ToString()); %>
 							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
+							<a class="button2" href="product.aspx">Shop Now </a>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="carousel-item item1" style="background:url(images/b2.jpg)">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get flat
-								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
-								<span>Big</span>
-								Sale
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item item1" style="background:url(images/b3.jpg)">
-				<div class="container">
-					<div class="w3l-space-banner">
-						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
-							<p>Get flat
-								<span>10%</span> Cashback</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
-								<span>Big</span>
-								Sale
-							</h3>
-							<a class="button2" href="product.html">Shop Now </a>
-						</div>
-					</div>
-				</div>
-			</div>
+			</div>		
+        <% i++;
+         }
+     }     %>
+						
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,7 +103,6 @@ Home | Electrify Shop
 				    		<a href="SingleProduct.aspx?ID=<% Response.Write(reader[0].ToString());  %>" class="link-product-add-cart">Quick View</a>
 						</div>
 						</div>
-						<span class="product-new-top">New</span>
 					</div>
 					<div class="item-info-product text-center border-top mt-4">
 						<h4 class="pt-1">
@@ -133,19 +113,9 @@ Home | Electrify Shop
 							<del>$<% Response.Write(reader["MRP"].ToString()); %></del>
 						</div>
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out" style="width:50%;">
-							<form action="#" method="post">
-							<fieldset>
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="add" value="1" />
-								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="OPPO A37f" />
-								<input type="hidden" name="amount" value="230.00" />
-								<input type="hidden" name="discount_amount" value="1.00" />
-								<input type="hidden" name="currency_code" value="USD" />
-								<input type="hidden" name="return" value=" " />
-    							<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button btn" />
-							</fieldset>
+							<form action="" method="post">
+								<input type="hidden" name="ProID" value="<% Response.Write(reader["ID"].ToString()); %>" />
+								<input type="submit" name="addToCart" value="Add to cart" class="button btn" />
 							</form>
 						</div>
 					</div>
