@@ -20,10 +20,29 @@ public partial class LoginCustomer : System.Web.UI.Page
         if (Session["ID"] != null)
         {
             Response.Write("<script>alert('You Are Already Logged In.'); history.go(-1);</script>");
-        } 
+        }
+        if (Request.Form["btnForgotPassword"] != null)
+        {
+            doChangePassword();
+        }
         if (Request.Form["submit"] != null)
         {
             doLogin();
+        }
+    }
+
+    private void doChangePassword()
+    {
+        
+        String email = Request.Form["email"].ToString();
+        String password = Request.Form["Password"].ToString();
+        con.Open();
+        String query = "update Customers set Password='"+password+"' where Email='"+email+"'";
+        SqlCommand cmd = new SqlCommand(query,con);
+        int affectedRows = cmd.ExecuteNonQuery();
+        if (affectedRows > 0)
+        {
+            Response.Write("<script>alert('Password Changed Successfully'); window.location='LoginCustomer.aspx';</script>");
         }
     }
 

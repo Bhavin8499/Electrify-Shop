@@ -172,54 +172,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- header lists -->
 					<ul>
 						<li class="text-center border-right text-white">
-							<!--<a class="play-icon popup-with-zoom-anim text-white"></a>-->
-							  <% if (!string.IsNullOrEmpty(Session["NickName"] as string))
-            {
-                String Name = Session["NickName"].ToString();%> 
-                <!--<i class="fas fa-user"></i>--><div class="circle"><% Response.Write(Name[0]); %></div><b style="margin-left:10px; height:20px; width:20px; line-height:20px; border-radius:50%; background-color:White; text-align:center;"></b>
-              
-				     
-				     <div class="dropdown11">
-                            <h6 class="dropbtn11"><% Response.Write(Session["NickName"]);  %></h6>
-                                <div class="dropdown-content11">
-                                  <a href="#">My Accounts</a>
-                                  <a href="#">My Order</a>
-                                  <a href="#">Track Order</a>
-                                  <a href="#">Logout</a>
-                                </div>
-                     </div>
-                                                    <% }  %> 
-								
+							<!--<a class="play-icon popup-with-zoom-anim text-white"></a>-->				
 						</li>
-						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-								<i class="fas fa-truck mr-2"></i>Track Order</a>
-						</li>
-						<li class="text-center border-right text-white">
-							<i class="fas fa-phone mr-2"></i> 846020xxxx
-						</li>
-						<% if (string.IsNullOrEmpty(Session["NickName"] as string))
-         { %> 
-                                <li class="text-center border-right text-white">
-							        <a href="LoginCustomer.aspx"  class="text-white">
-								        <i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						        </li>
-						        <li class="text-center text-white">
-							        <a href="CustomerSignUp.aspx"  class="text-white">
-								        <i class="fas fa-sign-out-alt mr-2"></i>Register </a>
-						        </li>
-                                    
-                       <%  }
-                     else
-                     { %> 
-                       
-                              <li class="text-center border-right text-white">
-							       <a href="Order.aspx"  class="text-white">
-								       <i class="fas fa-box"></i> Order</a>
-						      </li>
-						       
-						      <% } %>
-					
+						
 					</ul>
 					<!-- //header lists -->
 				</div>
@@ -331,24 +286,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- header-bot -->
 				<div class="col-md-9 header mt-4 mb-md-0 mb-4">
 					<div class="row">
-						<!-- search -->
-						<div class="col-10 agileits_search">
-							<form class="form-inline" action="#" method="post">
-								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
-								<button class="btn my-2 my-sm-0" type="submit">Search</button>
-							</form>
-						</div>
-						<!-- //search -->
-						<!-- cart details -->
-						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-									<a href="Cart.aspx"> <button class="btn w3view-cart" type="submit" name="submit" value="">
-										<i class="fas fa-cart-arrow-down"></i>
-									</button>
-									</a>
-								</form>
-							</div>
-						</div>
+						
 						<!-- //cart details -->
 					</div>
 				</div>
@@ -361,147 +299,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="navbar-inner">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="agileits-navi_search">
-					<form action="#" method="post">
-						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
-							<option value="">All Categories</option>
-							<option value="Televisions">Televisions</option>
-							<option value="Headphones">Headphones</option>
-							<option value="Computers">Computers</option>
-							<option value="Appliances">Appliances</option>
-							<option value="Mobiles">Mobiles</option>
-							<option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-							<option value="iPad & Tablets">iPad & Tablets</option>
-							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
-							<option value="Home Audio & Theater">Home Audio & Theater</option>
-						</select>
-					</form>
-				</div>
+				
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				    aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
-						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
-								<span class="sr-only">(current)</span>
-							</a>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Electronics
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">Mobiles, Computers</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.aspx">All Mobile Phones</a>
-												</li>
-												<li>
-													<a href="product.aspx">All Mobile Accessories</a>
-												</li>
-												<li>
-													<a href="product.aspx">Cases & Covers</a>
-												</li>
-												<li>
-													<a href="product.aspx">Power Banks</a>
-												</li>
-												<li>
-													<a href="product.aspx">All Certified Refurbished</a>
-												</li>
-												<li>
-													<a href="product.aspx">Tablets</a>
-												</li>
-												<li>
-													<a href="product.aspx">Wearable Devices</a>
-												</li>
-												<li>
-													<a href="product.aspx">Smart Home</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.aspx">Laptops</a>
-												</li>
-												<li>
-													<a href="product.aspx">Drives & Storage</a>
-												</li>
-												<li>
-													<a href="product.aspx">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="product.aspx">Game Zone</a>
-												</li>
-												<li>
-													<a href="product.aspx">Software</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Appliances
-							</a>
-							<div class="dropdown-menu">
-								<div class="agile_inner_drop_nav_info p-4">
-									<h5 class="mb-3">TV, Appliances, Electronics</h5>
-									<div class="row">
-										<div class="col-sm-6 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="product.aspx">Televisions</a>
-												</li>
-												<li>
-													<a href="product.aspx">Home Entertainment Systems</a>
-												</li>
-												<li>
-													<a href="product.aspx">Headphones</a>
-												</li>
-												<li>
-													<a href="product.aspx">Cameras</a>
-												</li>
-												<li>
-													<a href="product.aspx">DSLR Cameras</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="index.aspx">Home</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="about.html">About Us</a>
+							<a class="nav-link" href="AddNewBanner.aspx">Add New Banner</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product.html">New Arrivals</a>
+							<a class="nav-link" href="AllProducts.aspx">All Products</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Pages
-							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="product.html">Product 1</a>
-								<a class="dropdown-item" href="product2.html">Product 2</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="single.html">Single Product 1</a>
-								<a class="dropdown-item" href="single2.html">Single Product 2</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="checkout.html">Checkout Page</a>
-								<a class="dropdown-item" href="payment.html">Payment Page</a>
-							</div>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="AllSellerList.aspx">All Seller List</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact Us</a>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="AllContacts.aspx">All Contacts</a>
 						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="AboutUs.aspx">About Us</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="../Logout.aspx">Logout</a>
+						</li>						
 					</ul>
 				</div>
 			</nav>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/hfNoSidebar.master" AutoEventWireup="true" CodeFile="addNewProduct.aspx.cs" Inherits="admin_addNewProduct" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" AutoEventWireup="true" CodeFile="addNewProduct.aspx.cs" Inherits="admin_addNewProduct" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 
@@ -79,10 +79,6 @@ function validate(evt) {
 							</select>
 						</div>
 						<div class="form-group">
-							<label class="col-form-label">Product Type</label>
-							<input type="text" class="form-control" name="product_type" required="">
-						</div>
-						<div class="form-group">
 							<label class="col-form-label">Price</label>
 							<input type="text" class="form-control" name="price" required="" onkeypress='validate(event)'>
 						</div>
@@ -103,11 +99,11 @@ function validate(evt) {
 							<label class="col-form-label">Brand Name</label>
 							<input type="text" class="form-control" name="brand" required="">
 						</div>
-						<div class="form-group">
-							<label class="col-form-label">Product Image File Name</label>
-							<input type="text" class="form-control" name="brand" required="">
-						</div>
 						
+						<div class="form-group">
+							<label class="col-form-label">Quntity : </label>
+							<input type="number" min="1" class="form-control" name="qty"  required="">
+						</div>
 						<div>
 						    <label class="file">
                               <input type="file" id="file" name="file" aria-label="File browser example" accept="image/*" onchange="loadFile(event)">

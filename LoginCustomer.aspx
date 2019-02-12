@@ -64,11 +64,10 @@ function validate(evt) {
 						</div>
 						
 						<p class="text-center dont-do mt-3">Don't have an account?
-							<a href="CustomerSignUp.aspx" data-toggle="modal" data-target="#exampleModal2">
-								Register Now</a>
+							<a href="CustomerSignUp.aspx">Register Now</a>
 						</p>
 					</form>
-					<a href="#" data-toggle="modal" data-target="#exampleModal1">Forgot Password??</a>
+					<a href="#" data-toggle="modal" data-target="#exampleModal1">Forgot Password?</a>
 								
 	<!-- log in -->
 	<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -81,7 +80,7 @@ function validate(evt) {
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form action="" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
 							<input type="text" class="form-control" placeholder=" " name="email" required="">
@@ -96,7 +95,7 @@ function validate(evt) {
 							<span id='message'></span>
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Change Password">
+							<input type="submit" class="form-control" name="btnForgotPassword" value="Change Password">
 						</div>
 						<div class="sub-w3l">
 							

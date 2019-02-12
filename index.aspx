@@ -74,7 +74,7 @@ Home | Electrify Shop
 	<%
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open(); 
-	    String query = "select top 9 * from Product";
+	    String query = "select top 9 * from Product order by ID Desc";
         SqlCommand cmd = new SqlCommand(query,con);  
 	    SqlDataReader reader = cmd.ExecuteReader();
         if (reader.HasRows)

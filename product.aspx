@@ -2,7 +2,7 @@
 <%@ Import Namespace="System.Data.SqlClient" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
- | Electrify Shop</asp:Content>
+Product | Electrify Shop</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 
 <!-- banner -->
@@ -77,16 +77,17 @@
 	    String query = String.Empty;
         if (Request.QueryString["Type"] != null)
         {
-            query = "Select top 9 * from Product where Type = '" + Request.QueryString["Type"]+"'";
+            query = "Select * from Product where Type = '" + Request.QueryString["Type"]+"'";
         }
         else if (Request.QueryString["searchQuery"] != null)
         {
-            query = "Select top 9 * from Product where name like ('%" + Request.QueryString["searchQuery"] + "%')";
+            query = "Select * from Product where Name like ('%" + Request.QueryString["searchQuery"] + "%')";
         }  
         else
         {
-            query = "select top 9 * from Product";
+            query = "select * from Product";
         }
+        Response.Write(query);   
         SqlCommand cmd = new SqlCommand(query,con);  
 	    SqlDataReader reader = cmd.ExecuteReader();
         if (reader.HasRows)
