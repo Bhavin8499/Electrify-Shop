@@ -4,7 +4,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Product | Electrify Shop</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-
+<style type="text/css">
+.centerBlock {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-height:100px;
+  min-width:100px;
+  max-width:350px;
+  height:auto;
+  width:auto;
+  max-height:250px;
+}</style>
 <!-- banner -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<!-- Indicators-->
@@ -72,22 +83,22 @@ Product | Electrify Shop</asp:Content>
 	</h3>
 	<center>
 	<%
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\speed-\Documents\Electrify-Shop.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
 	    String query = String.Empty;
         if (Request.QueryString["Type"] != null)
         {
-            query = "Select * from Product where Type = '" + Request.QueryString["Type"]+"'";
+            query = "Select * from Product where Type = '" + Request.QueryString["Type"]+"' order by ID desc";
         }
         else if (Request.QueryString["searchQuery"] != null)
         {
-            query = "Select * from Product where Name like ('%" + Request.QueryString["searchQuery"] + "%')";
+            query = "Select * from Product where Name like ('%" + Request.QueryString["searchQuery"] + "%') order by ID desc";
         }  
         else
         {
-            query = "select * from Product";
+            query = "select * from Product order by ID desc";
         }
-        Response.Write(query);   
+	       
         SqlCommand cmd = new SqlCommand(query,con);  
 	    SqlDataReader reader = cmd.ExecuteReader();
         if (reader.HasRows)
@@ -111,7 +122,7 @@ Product | Electrify Shop</asp:Content>
 					<div class="men-thumb-item text-center" >
 					
 						<% String[] imgArr = reader["Product_img"].ToString().Split('|');
-         Response.Write("<img src='images/products/" + imgArr[0].ToString() + "' style='height:250px; width:auto;' alt=''>"); %>
+         Response.Write("<img class='centerBlock' src='images/products/" + imgArr[0].ToString() + "'  >"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 				    		<a href="SingleProduct.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>" class="link-product-add-cart">Quick View</a>

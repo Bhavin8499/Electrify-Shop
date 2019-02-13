@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/webMaster/hfNoSidebar.master" AutoEventWireup="true" CodeFile="webLogin.aspx.cs" Inherits="adminLogin" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/hfNoSidebar.master" AutoEventWireup="true" CodeFile="webLogin.aspx.cs" Inherits="adminLogin" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 

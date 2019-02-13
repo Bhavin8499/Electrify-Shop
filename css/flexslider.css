@@ -308,3 +308,13 @@ html[xmlns] .flexslider .slides {
     margin: 0 0 30px;
   }
 }
+
+@media only screen and (min-width: 959px) {
+    .img {
+        max-width: 50%;
+        max-height: 50%;
+        display: block;
+        margin-left: auto;
+                margin-right: auto;
+    }
+}

@@ -46,7 +46,7 @@ public partial class adminLogin : System.Web.UI.Page
             {
                 Session["Email"] = reader["Email"].ToString();
                 Session["WebID"] = reader["ID"].ToString();
-                Response.Write("<script>alert('Welcome " + reader["Name"].ToString() + "'); window.location = 'index.aspx';</script>");
+                Response.Write("<script>alert('Welcome " + reader["Name"].ToString() + "'); window.location = 'webMaster/index.aspx';</script>");
                 //Response.Redirect("index.aspx");
             }
         }
