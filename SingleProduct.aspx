@@ -1,284 +1,25 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/hfNoSidebar.master" AutoEventWireup="true" CodeFile="SingleProduct.aspx.cs" Inherits="SingleProduct" Title="Untitled Page" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="HeadTagContentPlaceHolder" Runat="Server">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/product_responsive.css">
+
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 Product Name | Electrify Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
-<style>
-.img-fluid1 {
-  max-width: 100%;
-  height: auto;
-}
 
-.img-thumbnail1 {
-  padding: 0.25rem;
-  background-color: #000000;
-  border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
-  max-width: 100%;
-  height: auto;
-}
 
-/* Compatibility styles for frameworks like bootstrap, foundation e.t.c */
-.xzoom-source img, .xzoom-preview img, .xzoom-lens img {
-  display: block;
-  max-width: none;
-  max-height: none;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-/* --------------- */
-
-/* xZoom Styles below */
-.xzoom-container { 
-  display: inline-block;
-}
-
-.xzoom-thumbs {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.xzoom { 
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);  
-}
-.xzoom2, .xzoom3, .xzoom4, .xzoom5 {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-}
-
-/* Thumbs */
-.xzoom-gallery, .xzoom-gallery2, .xzoom-gallery3, .xzoom-gallery4, .xzoom-gallery5 {
-  border: 1px solid #cecece;
-  margin-left: 5px;
-  margin-bottom: 10px;
-}
-
-.xzoom-source, .xzoom-hidden {
-  display: block;
-  position: static;
-  float: none;
-  clear: both;
-}
-
-/* Everything out of border is hidden */
-.xzoom-hidden {
-  overflow: hidden;
-}
-
-/* Preview */
-.xzoom-preview {
-  border: 1px solid #888;
-  background: #2f4f4f;
-  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);
-}
-
-/* Lens */
-.xzoom-lens {
-  border: 1px solid #555;
-  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);
-  cursor: crosshair;
-}
-
-/* Loading */
-.xzoom-loading {
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-radius: 100%;
-  opacity: .7;
-  background: url(../images/xloading.gif);
-  width: 48px;
-  height: 48px;
-}
-
-/* Additional class that applied to thumb when it is active */
-.xactive {
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(74,169,210,1);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(74,169,210,1);
-  box-shadow: 0px 0px 3px 0px rgba(74,169,210,1); 
-  border: 1px solid #4aaad2;
-}
-
-/* Caption */
-.xzoom-caption {
-  position: absolute;
-  bottom: -43px;
-  left: 0;
-  background: #000;
-  width: 100%;
-  text-align: left;
-}
-
-.xzoom-caption span {
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: block;
-  font-size: 0.75em;
-  font-weight: bold;
-  padding: 10px;
-}
-
-</style>
-<script>(function ($) {
-    $(document).ready(function() {
-        $('.xzoom, .xzoom-gallery').xzoom({zoomWidth: 400, title: true, tint: '#333', Xoffset: 15});
-        $('.xzoom2, .xzoom-gallery2').xzoom({position: '#xzoom2-id', tint: '#ffa200'});
-        $('.xzoom3, .xzoom-gallery3').xzoom({position: 'lens', lensShape: 'circle', sourceClass: 'xzoom-hidden'});
-        $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});
-        $('.xzoom5, .xzoom-gallery5').xzoom({tint: '#006699', Xoffset: 15});
-
-        //Integration with hammer.js
-        var isTouchSupported = 'ontouchstart' in window;
-
-        if (isTouchSupported) {
-            //If touch device
-            $('.xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5').each(function(){
-                var xzoom = $(this).data('xzoom');
-                xzoom.eventunbind();
-            });
-            
-            $('.xzoom, .xzoom2, .xzoom3').each(function() {
-                var xzoom = $(this).data('xzoom');
-                $(this).hammer().on("tap", function(event) {
-                    event.pageX = event.gesture.center.pageX;
-                    event.pageY = event.gesture.center.pageY;
-                    var s = 1, ls;
-    
-                    xzoom.eventmove = function(element) {
-                        element.hammer().on('drag', function(event) {
-                            event.pageX = event.gesture.center.pageX;
-                            event.pageY = event.gesture.center.pageY;
-                            xzoom.movezoom(event);
-                            event.gesture.preventDefault();
-                        });
-                    }
-    
-                    xzoom.eventleave = function(element) {
-                        element.hammer().on('tap', function(event) {
-                            xzoom.closezoom();
-                        });
-                    }
-                    xzoom.openzoom(event);
-                });
-            });
-
-        $('.xzoom4').each(function() {
-            var xzoom = $(this).data('xzoom');
-            $(this).hammer().on("tap", function(event) {
-                event.pageX = event.gesture.center.pageX;
-                event.pageY = event.gesture.center.pageY;
-                var s = 1, ls;
-
-                xzoom.eventmove = function(element) {
-                    element.hammer().on('drag', function(event) {
-                        event.pageX = event.gesture.center.pageX;
-                        event.pageY = event.gesture.center.pageY;
-                        xzoom.movezoom(event);
-                        event.gesture.preventDefault();
-                    });
-                }
-
-                var counter = 0;
-                xzoom.eventclick = function(element) {
-                    element.hammer().on('tap', function() {
-                        counter++;
-                        if (counter == 1) setTimeout(openfancy,300);
-                        event.gesture.preventDefault();
-                    });
-                }
-
-                function openfancy() {
-                    if (counter == 2) {
-                        xzoom.closezoom();
-                        $.fancybox.open(xzoom.gallery().cgallery);
-                    } else {
-                        xzoom.closezoom();
-                    }
-                    counter = 0;
-                }
-            xzoom.openzoom(event);
-            });
-        });
-        
-        $('.xzoom5').each(function() {
-            var xzoom = $(this).data('xzoom');
-            $(this).hammer().on("tap", function(event) {
-                event.pageX = event.gesture.center.pageX;
-                event.pageY = event.gesture.center.pageY;
-                var s = 1, ls;
-
-                xzoom.eventmove = function(element) {
-                    element.hammer().on('drag', function(event) {
-                        event.pageX = event.gesture.center.pageX;
-                        event.pageY = event.gesture.center.pageY;
-                        xzoom.movezoom(event);
-                        event.gesture.preventDefault();
-                    });
-                }
-
-                var counter = 0;
-                xzoom.eventclick = function(element) {
-                    element.hammer().on('tap', function() {
-                        counter++;
-                        if (counter == 1) setTimeout(openmagnific,300);
-                        event.gesture.preventDefault();
-                    });
-                }
-
-                function openmagnific() {
-                    if (counter == 2) {
-                        xzoom.closezoom();
-                        var gallery = xzoom.gallery().cgallery;
-                        var i, images = new Array();
-                        for (i in gallery) {
-                            images[i] = {src: gallery[i]};
-                        }
-                        $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
-                    } else {
-                        xzoom.closezoom();
-                    }
-                    counter = 0;
-                }
-                xzoom.openzoom(event);
-            });
-        });
-
-        } else {
-            //If not touch device
-
-            //Integration with fancybox plugin
-            $('#xzoom-fancy').bind('click', function(event) {
-                var xzoom = $(this).data('xzoom');
-                xzoom.closezoom();
-                $.fancybox.open(xzoom.gallery().cgallery, {padding: 0, helpers: {overlay: {locked: false}}});
-                event.preventDefault();
-            });
-           
-            //Integration with magnific popup plugin
-            $('#xzoom-magnific').bind('click', function(event) {
-                var xzoom = $(this).data('xzoom');
-                xzoom.closezoom();
-                var gallery = xzoom.gallery().cgallery;
-                var i, images = new Array();
-                for (i in gallery) {
-                    images[i] = {src: gallery[i]};
-                }
-                $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
-                event.preventDefault();
-            });
-        }
-    });
-})(jQuery);</script>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-</head>
+ 
 <%
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     String query = "select * from Product where id="+Request.Params["ID"].ToString();
@@ -287,8 +28,8 @@ Product Name | Electrify Shop
     SqlCommand cmd = new SqlCommand(query,con);
     SqlDataReader reader = cmd.ExecuteReader();
     String ProductID;
-    String Name,Price, MRP, Description, WarrentyYear, Type, ProductIMG;
-    ProductID = Name = Price = MRP = Description = WarrentyYear = Type = ProductIMG = String.Empty;
+    String Name,Price, MRP, Description, WarrentyYear, Type, ProductIMG, qty;
+    ProductID = Name = Price = MRP = Description = WarrentyYear = Type = ProductIMG = qty = String.Empty;
     String CustomerID = String.Empty;
     if (!string.IsNullOrEmpty(Session["ID"] as string))
     {
@@ -304,6 +45,7 @@ Product Name | Electrify Shop
             Description = reader["Description"].ToString();
            // WarrentyYear = reader["Name"].ToString();
             Type = reader["Type"].ToString();
+            qty = reader["Qty"].ToString();
             ProductIMG = reader["Product_img"].ToString();
         }
     }
@@ -312,40 +54,152 @@ Product Name | Electrify Shop
     String[] imgArr = ProductIMG.Split('|');
    
 %>
+<!--
+<div class="super_container">
+<div class="single_product">
+		<div class="container">
+			<div class="row">
 
+				<!-- Images 
+				<div class="col-lg-2 order-lg-1 order-2">
+					<ul class="image_list">
+					<% for (int i = 0; i < imgArr.Length; i++)
+        {%>
+            <li data-image="images/products/<% Response.Write(imgArr[i]); %>"><img src="images/products/<% Response.Write(imgArr[i]); %>" alt="" /></li>
+        <%} %>
+						
+					</ul>
+				</div>
 
+				<div class="col-lg-5 order-lg-2 order-1">
+					<div class="image_selected"><img src="images/products/<% Response.Write(imgArr[0]); %>" alt=""></div>
+				</div>
 
+				<div class="col-lg-5 order-3">
+					<div class="product_description">
+						<div class="product_category">Laptops</div>
+						<div class="product_name">MacBook Air 13</div>
+						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+						<div class="product_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum. laoreet turpis, nec sollicitudin dolor cursus at. Maecenas aliquet, dolor a faucibus efficitur, nisi tellus cursus urna, eget dictum lacus turpis.</p></div>
+						<div class="order_info d-flex flex-row">
+							<form action="#">
+								<div class="clearfix" style="z-index: 1000;">
 
-<div class="container">
-    
-    <!-- default start -->
-    <section id="default" class="padding-top0">
-    <div class="row">
-      <div class="large-12 column"><h3>Product Zooming</h3></div>
-        <hr>
-      <div class="large-5 column">
-        <div class="xzoom-container">
-          <img class="xzoom" id="xzoom-default" src="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/preview/01_b_car.jpg" xoriginal="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/original/01_b_car.jpg" />
-          <div class="xzoom-thumbs">
-            <a href="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/original/01_b_car.jpg"><img class="xzoom-gallery" width="80" src="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/thumbs/01_b_car.jpg"  xpreview="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/preview/01_b_car.jpg" title="The description goes here"></a>
-              
-            <a href="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/original/02_o_car.jpg"><img class="xzoom-gallery" width="80" src="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/preview/02_o_car.jpg" title="The description goes here"></a>
-              
-            <a href="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/original/03_r_car.jpg"><img class="xzoom-gallery" width="80" src="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/preview/03_r_car.jpg" title="The description goes here"></a>
-              
-            <a href="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/original/04_g_car.jpg"><img class="xzoom-gallery" width="80" src="http://www.jqueryscript.net/demo/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/images/gallery/preview/04_g_car.jpg" title="The description goes here"></a>
-          </div>
-        </div>        
-      </div>
-      <div class="large-7 column"></div>
-    </div>
-    </section>
-    <!-- default end -->
-  </div>
- <script src='https://code.jquery.com/jquery-2.1.1.js'></script>
-<script src='https://unpkg.com/xzoom/dist/xzoom.min.js'></script>
-<script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js'></script>
+									<div class="product_quantity clearfix">
+										<input id="quantity_input" type="number" style="width:100%;" min="1"  value="1" />
+										
+									</div>
 
+									
+
+								</div>
+
+								<div class="product_price">$2000</div>
+								<div class="button_container">
+									<button type="button" class="button cart_button">Add to Cart</button>
+									<div class="product_fav"><i class="fas fa-heart"></i></div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>-->
+<script>
+function imgChangeClick(event){
+
+    var x = event;
+    var dest = document.getElementById("mainImage");
+    dest.src = event.getAttribute("src");
+}
+function qtyValueChanged(caller){
+
+    var txtBox = caller;
+    var val1 = txtBox.value;
+    var val2 = document.getElementById("singlePrice").innerHTML;
+    var total = val1 * val2;
+    document.getElementById("TotalPrice").innerHTML = total;
+}
+</script>
+	<div class="single_product">
+		<div class="container">
+			<div class="row">
+
+				<!-- Images -->
+				<div class="col-lg-2 order-lg-1 order-2">
+					<ul class="image_list">
+					<% for (int i = 0; i < imgArr.Length; i++)
+        {%>
+            <li data-image="images/products/<% Response.Write(imgArr[i]); %>"><img  style="max-height:100%; max-width:100%;"   onclick="imgChangeClick(this)" src="images/products/<% Response.Write(imgArr[i]); %>" alt=""></li>
+						
+        <%} %>
+						</ul>
+				</div>
+
+				<!-- Selected Image -->
+				<div class="col-lg-5 order-lg-2 order-1">
+					<div class="image_selected"><img id="mainImage" style="max-height:100%; max-width:100%;" src="images/products/<% Response.Write(imgArr[0]); %>" alt=""></div>
+				</div>
+
+				<!-- Description -->
+				<div class="col-lg-5 order-3">
+					<div class="product_description">
+						<div class="product_category"><% Response.Write(Type); %></div>
+						<div class="product_name"><% Response.Write(Name); %></div>
+						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+						<div class="product_text"><p><% Response.Write(Description); %></p></div>
+						<div class="order_info d-flex flex-row">
+							<form action="" method="post">
+								<div class="clearfix" style="z-index: 1000;">
+
+									<!-- Product Quantity --><% if (Session["ID"] != null)
+        { %>
+									<div class="product_quantity clearfix" style="border-color:Gray; color:Gray;">
+										<input  id="" type="number" min="1" onmouseup="qtyValueChanged(this);" style="width:100%; color:Black; " pattern="[0-9]*" max="<% Response.Write(qty); %>" value="1" name="quntity">
+										<input type="hidden" name="item_name" value="<% Response.Write(Name); %>" />
+								
+								<input type="hidden" name="productID" value="<% Response.Write(ProductID); %>" />
+								<input type="hidden" name="customerID" value="<% Response.Write(CustomerID); %>" />
+									</div>
+								</div>
+
+								<div class="product_price">$<label id="singlePrice"><%Response.Write(Price); %></label></div>
+								<div class="product_category">Total : $<label id="TotalPrice"><%Response.Write(Price); %></label></div>
+								<div class="button_container">
+									<input  type="submit" name="submit" class="button cart_button" value="Add to Cart">
+								</div>
+								
+							</form>
+							<%}
+        else
+        { %>
+        <div class="product-single-w3l">
+						<p class="my-3">Please Login First To Add Product Into Cart <a href="LoginCustomer.aspx">Login Here</a></p>
+						</div>
+        
+					<%} %>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/greensock/TweenMax.min.js"></script>
+<script src="plugins/greensock/TimelineMax.min.js"></script>
+<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="plugins/greensock/animation.gsap.min.js"></script>
+<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="js/product_custom.js"></script>
 </asp:Content>
 
