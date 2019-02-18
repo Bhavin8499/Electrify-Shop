@@ -111,21 +111,23 @@ Orders | Electrify Shop
             String cusID = reader["CusID"].ToString();
             String Price = reader["Price"].ToString();
             String Qty = reader["Qty"].ToString();
-            /* String userName = String.Empty;
-             String userName = String.Empty;
-             String userName = String.Empty;
-             String userName = String.Empty;
-             String userName = String.Empty;
-             */
-            int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
-            String queryPro = "select * from product where ID =" + proID;
-            SqlCommand cmdPro = new SqlCommand(queryPro, con);
-            SqlDataReader readerProduct = cmdPro.ExecuteReader();
-            if (readerProduct.HasRows)
+            if (reader["Approved"].ToString() == "Approved")
             {
-                while (readerProduct.Read())
+                /* String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 String userName = String.Empty;
+                 */
+                int Total = Convert.ToInt32(Price) * Convert.ToInt32(Qty);
+                String queryPro = "select * from product where ID =" + proID;
+                SqlCommand cmdPro = new SqlCommand(queryPro, con);
+                SqlDataReader readerProduct = cmdPro.ExecuteReader();
+                if (readerProduct.HasRows)
                 {
-                    String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                    while (readerProduct.Read())
+                    {
+                        String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
                                                        %>
                                                                 <div style="margin:50px;">
                                                 <div style="width:98%; box-shadow:-1px 1px 1px 1px Gray;" class="table-responsive">
@@ -146,14 +148,14 @@ Orders | Electrify Shop
                                                 </div>
                                              </div>
                                                     <%       }
+                }
+                else
+                {
+                    Response.Write("There Is No Current Orders");
+                }
+
+
             }
-            else
-            {
-                Response.Write("There Is No Current Orders");
-            }
-
-
-
 
         }
 
@@ -202,7 +204,7 @@ Orders | Electrify Shop
 
         while (reader.Read())
         {
-            if (reader["Status"].ToString() != "Delivered")
+            if (reader["Status"].ToString() == "Delivered")
             {
                 String proID = reader["ProID"].ToString();
                 String cusID = reader["CusID"].ToString();
@@ -281,6 +283,10 @@ Orders | Electrify Shop
             {
                 if (reader["Approved"].ToString() != "Approved")
                 {
+                    if (reader["Approved"].ToString() != "Disapproved")
+                    {
+                        continue;
+                    }
                     String proID = reader["ProID"].ToString();
                     String cusID = reader["CusID"].ToString();
                     String Price = reader["Price"].ToString();
@@ -333,10 +339,10 @@ Orders | Electrify Shop
                                                             <% Response.Write(reader["MobileNo"].ToString()); %>
                                                         </td>
                                                         <td style="width: 100px;">
-                                                            <b><a href="TrackOrder.aspx">Approve</a></b>
+                                                            <b><a href="SellerOrders.aspx?status=Approved&ID=<%Response.Write(reader["ID"].ToString()); %>">Approve</a></b>
                                                         </td>
                                                         <td style="width: 100px;">
-                                                            <b><a href="TrackOrder.aspx">disapprove</a></b>
+                                                            <b><a href="SellerOrders.aspx?status=Disapproved&ID=<%Response.Write(reader["ID"].ToString()); %>">Disapprove</a></b>
                                                         </td>
                                                     </tr>
                                                 </table>

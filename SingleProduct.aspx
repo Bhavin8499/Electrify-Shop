@@ -150,7 +150,6 @@ function qtyValueChanged(caller){
 					<div class="product_description">
 						<div class="product_category"><% Response.Write(Type); %></div>
 						<div class="product_name"><% Response.Write(Name); %></div>
-						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
 						<div class="product_text"><p><% Response.Write(Description); %></p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="" method="post">
