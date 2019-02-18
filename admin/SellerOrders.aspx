@@ -141,7 +141,7 @@ Orders | Electrify Shop
                                                         <td style="width:100px;"><b>$<% Response.Write(Price); %> <br /> x &nbsp; <% Response.Write(Qty); %> <br />_____________<br />$<% Response.Write(Total.ToString()); %> </b></td>
                                                         
                                                         <td><% Response.Write(reader["Name"].ToString()); %> <br />____________________________________________________<br /><% Response.Write(reader["Address"].ToString()); %><br />____________________________________________________<br /><% Response.Write(reader["MobileNo"].ToString()); %></td>
-                                                        <td style="width:100px;"><b><a href="TrackOrder.aspx">Edit Shipping Details</a></b></td>
+                                                        <td style="width:100px;"><b><a href="EditShippingDetails.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>">Edit Shipping Details</a></b></td>
                                                         
                                                     </tr>
                                                 </table>
