@@ -66,16 +66,16 @@ function validate(evt) {
   background-color: transparent;
   border: solid 1px gray;
   ">
-							<option>Mobile Phone</option>
-							<option>Appliance</option>
-							<option>Headphone</option>
-							<option>PC</option>
-							<option>Laptop</option>
-							<option>Television</option>
-							<option>Camera</option>
-							<option>Hard Drives</option>
-							<option>Game Controllers</option>
-							<option>Software</option>
+							<option value="Mobile">Mobile Phone</option>
+							<option value="Appliance">Appliance</option>
+							<option value="Headphone">Headphone</option>
+							<option value="PC">PC</option>
+							<option value="Laptop">Laptop</option>
+							<option value="Television">Television</option>
+							<option value="Camera">Camera</option>
+							<option value="Hard Drives">Hard Drives</option>
+							<option value="Game Controllers">Game Controllers</option>
+							<option value="Software">Software</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -89,7 +89,7 @@ function validate(evt) {
 						
 						<div class="form-group">
 							<label class="col-form-label">Description</label>
-							<input type="text" class="form-control" name="desc" required="">
+							<textarea name="desc" class="form-control" style="height:200px;"></textarea>
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Keyword</label>

@@ -361,22 +361,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- shop locator (popup) -->
 	<!-- //header-bottom -->
 	<!-- navigation -->
+	<script>
+	function productChanged(){
+	    document.getElementById("SearchItemForm").submit();
+	}
+	</script>
 	<div class="navbar-inner">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="agileits-navi_search">
-					<form action="#" method="post">
-						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
+					<form action="product.aspx" id="SearchItemForm" method="get">
+						<select id="agileinfo-nav_search" name="proType" onchange="productChanged();"; class="border" required="">
 							<option value="">All Categories</option>
-							<option value="Televisions">Televisions</option>
-							<option value="Headphones">Headphones</option>
-							<option value="Computers">Computers</option>
-							<option value="Appliances">Appliances</option>
-							<option value="Mobiles">Mobiles</option>
-							<option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-							<option value="iPad & Tablets">iPad & Tablets</option>
-							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
-							<option value="Home Audio & Theater">Home Audio & Theater</option>
+							<option value="Television">Televisions</option>
+							<option value="Headphone">Headphones</option>
+							<option value="PC">Computers</option>
+							<option value="Appliance">Appliances</option>
+							<option value="Mobile Phone">Mobiles</option>
+							<option value="Laptop">Laptop</option>
+							<option value="Hard Drives">Hard Drives</option>
+							<option value="Game Controllers">Game Controllers</option>
+							<option value="Software">Software</option>
 						</select>
 					</form>
 				</div>

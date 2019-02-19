@@ -8,7 +8,7 @@ Edit Shipping Details | Electrify-Shop
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     con.Open();
 
-    String query = "select * from CusOrder where ID=8";
+    String query = "select * from CusOrder where ID="+Request.QueryString["ordID"] != null? Request.QueryString["ordID"].ToString() : "0";
     SqlCommand cmd = new SqlCommand(query,con);
     SqlDataReader reader = cmd.ExecuteReader();
     String ProductName = String.Empty;

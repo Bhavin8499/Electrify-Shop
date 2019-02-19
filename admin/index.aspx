@@ -25,7 +25,7 @@ Admin | Index
 	<%
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
     con.Open();
-    String query = "select top 9 * from Product Where SellerID = " + Session["SellerID"].ToString();
+    String query = "select top 9 * from Product Where SellerID = " + Session["SellerID"].ToString()+" order by ID desc";
     SqlCommand cmd = new SqlCommand(query, con);
     SqlDataReader reader = cmd.ExecuteReader();
     if (reader.HasRows)
@@ -52,20 +52,20 @@ Admin | Index
                         Response.Write("<img src='../images/products/" + imgArr[0] + "' style='height:250px; width:auto;' alt=''>"); %>
 						<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
-				    		<a href="single.html" class="link-product-add-cart">Quick View</a>
+				    		<a href="editProduct.aspx?proID=<% Response.Write(reader["ID"].ToString()); %>" class="link-product-add-cart">Quick Edit</a>
 						</div>
 						</div>
 					</div>
 					<div class="item-info-product text-center border-top mt-4">
 						<h4 class="pt-1">
-						<a href="singleProduct.aspx"><% Response.Write(reader["Name"].ToString()); %></a>
+						<% Response.Write(reader["Name"].ToString()); %>
 						</h4>
 						<div class="info-product-price my-2">
 							<span class="item_price">$<% Response.Write(reader["Price"].ToString()); %></span>
 							<del>$<% Response.Write(reader["MRP"].ToString()); %></del>
 						</div>
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out" style="width:50%;">
-						<a href="edi"><input type="button" name="submit" value="Edit Product" class="button btn" /></a>
+						<a href="editProduct.aspx?proID=<% Response.Write(reader["ID"].ToString()); %>"><input type="button" name="submit" value="Edit Product" class="button btn" /></a>
 							
 						</div>
 					</div>

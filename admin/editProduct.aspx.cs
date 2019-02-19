@@ -49,7 +49,7 @@ public partial class admin_editProduct : System.Web.UI.Page
         Random rand = new Random();
         int proImgID = rand.Next(10000, 1000000);
 
-        if (img1.FileName != String.Empty)
+        if (img1.ContentLength > 0)
         {
             String ImgExt = Path.GetExtension(img1.FileName);
             String ImgName = ProName + "-" + proImgID.ToString() + "-" + 1 + ImgExt;
@@ -58,7 +58,7 @@ public partial class admin_editProduct : System.Web.UI.Page
             img1Name = ImgName;
             CombinedImageName += ImgName;
         }
-        if (img2.FileName != String.Empty)
+        if (img2.ContentLength >0)
         {
             String ImgExt = Path.GetExtension(img2.FileName);
             String ImgName = ProName + "-" + proImgID.ToString() + "-" + 2 + ImgExt;
@@ -67,7 +67,7 @@ public partial class admin_editProduct : System.Web.UI.Page
             img2Name = ImgName;
             CombinedImageName += "|" + ImgName;
         }
-        if (img3.FileName != String.Empty)
+        if (img3.ContentLength > 0)
         {
             String ImgExt = Path.GetExtension(img3.FileName);
             String ImgName = ProName + "-" + proImgID.ToString() + "-" + 3 + ImgExt;
