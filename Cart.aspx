@@ -53,7 +53,6 @@ Cart | Electrify Shop
     int i = 0;
     if (reader.HasRows)
     {
-        i = 1;
         while (reader.Read())
         {
             SqlConnection conProduct = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
@@ -73,9 +72,9 @@ Cart | Electrify Shop
                             %>
                                                 <tr class="rem1">
 							                    <td class="invert"><% Response.Write(i.ToString()); %></td>
-							                    <td class="invert-image">
+							                    <td class="invert-image" >
 								                    <a href="single.html">
-									                    <img src="images/products/<% Response.Write(imgArr[0]); %>" alt=" " class="img-responsive">
+									                    <img src="images/products/<% Response.Write(imgArr[0]); %>" alt=" " class="img-responsive" style="max-height:200px; width:auto;">
 								                    </a>
 							                    </td>
 							                    <td class="invert">
@@ -93,21 +92,21 @@ Cart | Electrify Shop
 							                    <td class="invert"><% Response.Write(readerProduct["Price"].ToString()); %></td>
 							                    <td class="invert"><% Response.Write(Total); %></td>
 							                    <td class="invert">
-								                    <div class="rem">
+								                   <a href="Cart.aspx?delProduct=YES&ID=<% Response.Write(reader["ID"].ToString()); %>"> <div class="rem">
 									                    <div class="close1"> </div>
-								                    </div>
+								                    </div></a>
 							                    </td>
 						                </tr>
                             <%
-    }
+                                } i++;
             }
-            i++;
+            
         }
     }			    
 		
 				     %>
 						    
-							<tr><td colspan="7"><div class="right-w3l"> <form method=post action="PlaceOrder.aspx"> <input type="submit" class="form-control" value="Check Out" > </form></div></td></tr>
+							<% if (i > 0) {  %><tr><td colspan="7"><div class="right-w3l"> <form method=post action="PlaceOrder.aspx"> <input type="submit" class="form-control" value="Check Out" > </form></div></td></tr><% } %>
 						</tbody>
 					</table>
 				</div>
@@ -118,7 +117,7 @@ Cart | Electrify Shop
 	</div>
 	<script type="text/javascript">
 	    var totalProduct = document.getElementById('TotalProduct');
-	    totalProduct.innerHTML = <% Response.Write(i-1); %>+" Products";
+	    totalProduct.innerHTML = <% Response.Write(i); %>+" Products";
 	</script>
 	
 	<!-- //checkout page -->

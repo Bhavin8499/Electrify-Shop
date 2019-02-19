@@ -63,6 +63,7 @@ public partial class LoginCustomer : System.Web.UI.Page
                 Session["ID"] = reader["ID"].ToString();
                 Response.Write("<script>alert('Welcome " + Session["NickName"] + "'); window.location = 'index.aspx';</script>");
                //Response.Redirect("index.aspx");
+               
             }
         }
         else

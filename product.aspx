@@ -86,9 +86,9 @@ Product | Electrify Shop</asp:Content>
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
 	    String query = String.Empty;
-        if (Request.QueryString["Type"] != null)
+        if (Request.QueryString["Type"] != null || Request.QueryString["proType"] != null)
         {
-            query = "Select * from Product where Type = '" + Request.QueryString["Type"]+"' order by ID desc";
+            query = "Select * from Product where Type = '" + Request.QueryString["proType"] + "' order by ID desc";
         }
         else if (Request.QueryString["searchQuery"] != null)
         {

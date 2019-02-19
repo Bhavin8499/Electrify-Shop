@@ -33,7 +33,7 @@ public partial class PlaceOrder : System.Web.UI.Page
         String SellerID = String.Empty;
         String Price = String.Empty;
         String Date = String.Empty;
-        String Message = "Your Product Is Placed";
+        String Message = "Your Product Is Waiting For Approval";
         String Name = Request.Form["Name"].ToString();
         String Address = Request.Form["Address"].ToString();
         String Pincode = Request.Form["Pincode"].ToString();
@@ -75,6 +75,10 @@ public partial class PlaceOrder : System.Web.UI.Page
                     String removeCart = "delete from Customer_Cart where ID = "+reader["ID"].ToString();
                     SqlCommand deleteCommand = new SqlCommand(removeCart, con);
                     deleteCommand.ExecuteNonQuery();
+
+                    String reduceStock = "update Product set Qty=Qty-"+qty+" where ID="+ProID;
+                    SqlCommand stockCmd = new SqlCommand(removeCart, con);
+                    stockCmd.ExecuteNonQuery();
 
                     Response.Write("<script>alert('Your Orders Placed Successfully'); window.location = 'Order.aspx';</script>");
 

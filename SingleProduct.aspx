@@ -14,7 +14,7 @@
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
-Product Name | Electrify Shop
+Electrify Shop
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 
@@ -158,7 +158,7 @@ function qtyValueChanged(caller){
 									<!-- Product Quantity --><% if (Session["ID"] != null)
         { %>
 									<div class="product_quantity clearfix" style="border-color:Gray; color:Gray;">
-										<input  id="" type="number" min="1" onmouseup="qtyValueChanged(this);" style="width:100%; color:Black; " pattern="[0-9]*" max="<% Response.Write(qty); %>" value="1" name="quntity">
+										<input  id="" type="number" min="1" onmouseup="qtyValueChanged(this);" style="width:100%; color:Black; " max="<% Response.Write(qty+1); %>" value="1" name="quntity">
 										<input type="hidden" name="item_name" value="<% Response.Write(Name); %>" />
 								
 								<input type="hidden" name="productID" value="<% Response.Write(ProductID); %>" />

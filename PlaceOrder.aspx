@@ -1,8 +1,58 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/hfNoSidebar.master" AutoEventWireup="true" CodeFile="PlaceOrder.aspx.cs" Inherits="PlaceOrder" Title="Untitled Page" %>
-
+<%@ Import Namespace="System.Data.SqlClient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
+<% SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+   double cartTotal = 0;
+   double cashAvaliable = 0;
+   if (Session["ID"] == null)
+   {
+       Response.Write("<script>alert('Please Login To View Your Cart Cart'); window.location = \"LoginCustomer.aspx\";</script>");
+   }
+   else
+   {
+       String query = "select * from Customer_Cart where CusID=" + Session["ID"].ToString();
+       con.Open();
+       SqlCommand cmd = new SqlCommand(query, con);
+       SqlDataReader reader = cmd.ExecuteReader(); 
+    
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            SqlConnection conProduct = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            conProduct.Open();
+            String query1 = "select * from Product where ID=" + reader["ProductID"].ToString();
+            SqlCommand cmdProduct = new SqlCommand(query1, conProduct);
+            SqlDataReader readerProduct = cmdProduct.ExecuteReader();
+            if (readerProduct.HasRows)
+            {
+                while (readerProduct.Read())
+                {
+                    String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
+                    double Price = Convert.ToDouble(readerProduct["Price"].ToString());
+                    double qty = Convert.ToDouble(reader["Qty"].ToString());
+                    double Total = Price * qty;
+                    cartTotal += Total;                    
+                } 
+            }
+            
+        }
+    }
+
+    query = "select ElectriCash from Customers where ID="+Session["ID"].ToString();
+    cmd = new SqlCommand(query,con);
+    reader = cmd.ExecuteReader();
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            cashAvaliable = Convert.ToInt32(reader["ElectriCash"].ToString());
+        }
+    }
+    
+    %>
 <script type="text/javascript">
 var check = function() {
   if (document.getElementById('Password').value ==
@@ -67,19 +117,42 @@ function validate(evt) {
 						
 						<div class="form-group">
 							<label class="col-form-label">Pay Type</label><br />
-						    <input type="radio" value="EF" name="PayType" checked="true" /><label class="col-form-label">Electrify Cash</label>
+						    <input type="radio" value="COD"  name="PayType"  checked="true" onclick="typeChangeToCashOnDel();"  /><label class="col-form-label">Cash On Dilavery</label>
 						    <br />
-						    <input type="radio" value="COD" name="PayType" /><label class="col-form-label">Cash On Dilavery</label>
+						    <input type="radio" value="EF" name="PayType" onclick="typeChangeToElectriCash();"  /><label class="col-form-label">Electrify Cash</label>
+						    <br /><span id="Message" style="color:Red; font-weight:bold;"></span>
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" id="btnSubmit" name="submit" value="Place Order" />
 						</div>
-						
+						<div class="right-w3l">
+						    <label>Total : <% Response.Write(cartTotal); %></label><br />
+						    <label>Electrify Cash Avaliable : <% Response.Write(cashAvaliable); %></label>
+						</div>
 					</form>
 				</div>
 			</div>
 			
 	<!-- //modal -->
-					
+<script>
+
+function typeChangeToElectriCash(){
+
+    var avaCash = <% Response.Write(cashAvaliable); %>;
+    var total = <% Response.Write(cartTotal); %>;
+    if(total > avaCash){
+        document.getElementById("Message").innerHTML = "You Don't Have Enough Cash";
+        document.getElementById("btnSubmit").disabled = true;
+    }
+    
+}
+
+function typeChangeToCashOnDel(){
+
+        document.getElementById("Message").innerHTML = "";
+    document.getElementById("btnSubmit").disabled = false;
+
+}
+</script>		<% } %>			
 </asp:Content>
 

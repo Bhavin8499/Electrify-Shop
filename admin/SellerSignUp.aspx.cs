@@ -37,7 +37,7 @@ public partial class CustomerSignUp : System.Web.UI.Page
         String Pincode = Request.Form["PinCode"];
         String Gender = Request.Form["Gender"];
         con.Open();
-        String query = "insert into Customers values ('"+name+"','"+Nickname+"','"+Address+"','"+Pincode+"',"+Mobile+",'"+Email+"','"+Gender+"','"+Password+"','',0)";
+        String query = "insert into Customers values ('"+name+"','"+Nickname+"','"+Address+"','"+Pincode+"',"+Mobile+",'"+Email+"','"+Gender+"','"+Password+"','')";
         SqlCommand cmd = new SqlCommand(query, con);
         cmd.ExecuteNonQuery();
         Response.Redirect("index.aspx");
