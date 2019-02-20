@@ -87,6 +87,7 @@ public partial class admin_editProduct : System.Web.UI.Page
         Product_img
         SellerID
         */
+
         con.Open();
         if (CombinedImageName.Length > 2)
         {
@@ -100,6 +101,8 @@ public partial class admin_editProduct : System.Web.UI.Page
         String[] splitOpt = new String[2];
         splitOpt[0] = "||";
         String[] joinWord = Keywords.Split(splitOpt, StringSplitOptions.None);
+        String tempDesc = Desc.Replace("'", "&apos;");
+        Desc = tempDesc;
         String query = "update product set Name='"+ProName+"',Type='"+Type+"',Price='"+Price+"',MRP='"+MRP+"',Description='"+Desc+"',Keyword='"+Keywords+"',BrandName='"+Brand+"',Qty='"+qty+"' where ID='"+ProID+"'";
 
         

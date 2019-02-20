@@ -128,7 +128,7 @@ function validate(evt) {
   background-color: transparent;
   border: solid 1px gray;
   ">
-							<option value="Mobile">Mobile Phone</option>
+							<option value="Mobile Phone">Mobile Phone</option>
 							<option value="Appliance">Appliance</option>
 							<option value="Headphone">Headphone</option>
 							<option value="PC">PC</option>
@@ -152,7 +152,7 @@ function validate(evt) {
 						
 						<div class="form-group">
 							<label class="col-form-label">Description</label>
-							<textarea class="form-control" name="desc" style="min-height:150px;" required=""><% Response.Write(Desc); %></textarea>						</div>
+							<textarea class="form-control" name="desc" style="min-height:150px; height:auto;" required=""><% Response.Write(Desc); %></textarea>						</div>
 						<div class="form-group">
 							<label class="col-form-label">Keyword</label>
 							<input type="text" class="form-control" name="key" value="<% Response.Write(KeyWord); %>" required="">

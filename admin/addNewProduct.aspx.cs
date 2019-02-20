@@ -90,6 +90,8 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         */
         String[] keys = ProName.Split();
         String Keywords = String.Join("||", keys);
+        String tempDesc = Desc.Replace("'","&apos;");
+        Desc = tempDesc;
         String query = "insert into Product values ('" + ProName + "','" + Type + "','" + Price + "','" + MRP + "','" + Desc + "','" + Keywords + "','" + Brand + "','" + CombinedImageName + "','" + sellerID + "','" + qty + "' )";
 
         // String demro = "insert into Product values ('"+ProName+"','"+Type+"',"+Price+","+MRP+",'"+Desc+"','"+Keywords+"','"+Brand+"','"+CombinedImageName+"',1)";

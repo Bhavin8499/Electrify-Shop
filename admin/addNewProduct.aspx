@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" AutoEventWireup="true" CodeFile="addNewProduct.aspx.cs" Inherits="admin_addNewProduct" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/hfNoSidebar.master" validateRequest="false" AutoEventWireup="true" CodeFile="addNewProduct.aspx.cs" Inherits="admin_addNewProduct" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContentPlaceHolder" Runat="Server">
 
