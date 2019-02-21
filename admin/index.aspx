@@ -47,10 +47,10 @@ Admin | Index
                 %>
                 <div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item text-center" >
-					
+					<div style="height:250px; width:auto;">
 						<% String[] imgArr = reader["Product_img"].ToString().Split('|');
-                        Response.Write("<img src='../images/products/" + imgArr[0] + "' style='height:250px; width:auto;' alt=''>"); %>
-						<div class="men-cart-pro">
+         Response.Write("<img src='../images/products/" + imgArr[0] + "' style='height:auto; max-height:90%; width:auto; max-width: 90%;' alt=''>"); %>
+						</div><div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 				    		<a href="editProduct.aspx?proID=<% Response.Write(reader["ID"].ToString()); %>" class="link-product-add-cart">Quick Edit</a>
 						</div>

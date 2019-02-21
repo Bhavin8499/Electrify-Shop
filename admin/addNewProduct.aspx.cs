@@ -52,7 +52,8 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         if (img1.ContentLength > 0)
         {
             String ImgExt = Path.GetExtension(img1.FileName);
-            String ImgName = ProName + "-" + proImgID.ToString() + "-" + 1 + ImgExt;
+            String tempName = ProName.Split(null)[0].ToString();
+            String ImgName = tempName + "-" + proImgID.ToString() + "-" + 1 + ImgExt;
             String FilePath = MapPath("../images/products/") + ImgName;
             img1.SaveAs(FilePath);
             img1Name = ImgName;
@@ -61,7 +62,8 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         if (img2.ContentLength > 0)
         {
             String ImgExt = Path.GetExtension(img2.FileName);
-            String ImgName = ProName + "-" + proImgID.ToString() + "-" + 2 + ImgExt;
+            String tempName = ProName.Split(null)[0].ToString();
+            String ImgName = tempName + "-" + proImgID.ToString() + "-" + 2 + ImgExt;
             String FilePath = MapPath("../images/products/") + ImgName;
             img2.SaveAs(FilePath);
             img2Name = ImgName;
@@ -70,7 +72,8 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         if (img3.ContentLength > 0)
         {
             String ImgExt = Path.GetExtension(img3.FileName);
-            String ImgName = ProName + "-" + proImgID.ToString() + "-" + 3 + ImgExt;
+            String tempName = ProName.Split(null)[0].ToString();
+            String ImgName = tempName + "-" + proImgID.ToString() + "-" + 3 + ImgExt;
             String FilePath = MapPath("../images/products/") + ImgName;
             img3.SaveAs(FilePath);
             img3Name = ImgName;
@@ -92,6 +95,14 @@ public partial class admin_addNewProduct : System.Web.UI.Page
         String Keywords = String.Join("||", keys);
         String tempDesc = Desc.Replace("'","&apos;");
         Desc = tempDesc;
+
+        String tempName12 = ProName.Replace("'", "&apos;");
+        ProName = tempName12;
+
+        tempName12 = Keywords.Replace("'", "&apos;");
+        Keywords = tempName12;
+
+
         String query = "insert into Product values ('" + ProName + "','" + Type + "','" + Price + "','" + MRP + "','" + Desc + "','" + Keywords + "','" + Brand + "','" + CombinedImageName + "','" + sellerID + "','" + qty + "' )";
 
         // String demro = "insert into Product values ('"+ProName+"','"+Type+"',"+Price+","+MRP+",'"+Desc+"','"+Keywords+"','"+Brand+"','"+CombinedImageName+"',1)";
