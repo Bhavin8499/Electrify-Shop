@@ -71,22 +71,18 @@ Cart | Electrify Shop
                                         
                             %>
                                                 <tr class="rem1">
-							                    <td class="invert"><% Response.Write(i.ToString()); %></td>
+							                    <td class="invert"><% Response.Write(i+1); %></td>
 							                    <td class="invert-image" >
 								                    <a href="single.html">
 									                    <img src="images/products/<% Response.Write(imgArr[0]); %>" alt=" " class="img-responsive" style="max-height:200px; width:auto;">
 								                    </a>
 							                    </td>
 							                    <td class="invert">
-								                    <div class="quantity">
-									                    <div class="quantity-select">
-										                    <div class="entry value-minus">&nbsp;</div>
-										                    <div class="entry value">
-											                    <span><% Response.Write(reader["Qty"].ToString()); %></span>
-										                    </div>
-										                    <div class="entry value-plus active">&nbsp;</div>
-									                    </div>
-								                    </div>
+										                     <form id='myform' method='post' action='Cart.aspx'>
+                                                            <input type='number' name='quantity' value="<% Response.Write(reader["Qty"].ToString()); %>" min="1" class='qty' style="width:auto; max-width:100px;" /><br />
+                                                            <input type='hidden' name='ProductID' value='<% Response.Write(reader["ID"].ToString()); %>' />
+                                                            <input style="font-size:1em; margin:0; padding:0; border:0; background-color:White;" name="btnUpdateCart" type="submit" value="Restock" />
+                                                        </form> 
 							                    </td>
 							                    <td class="invert"><% Response.Write(readerProduct["Name"].ToString()); %></td>
 							                    <td class="invert"><% Response.Write(readerProduct["Price"].ToString()); %></td>

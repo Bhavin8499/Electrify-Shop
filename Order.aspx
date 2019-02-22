@@ -43,12 +43,13 @@ Order | Electrify-Shop
                         
                         <td style="width:100px;"><b>$<% Response.Write(reader["Price"].ToString()); %></b></td>
                         
-                        <td>Deleverd on 1 april, 2018 
+                        <td>
                             <span><% Response.Write(reader["Message"].ToString()); %></span><br /><span><b>Status : </b><% Response.Write(reader["Status"].ToString()); %></span></td>
                         <td style="width:100px;"><b><a href="TrackOrder.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>"><img src="images/product images/Business_E-commerce__Logistics_56-512.png" width=100%/><br />Track Order</a></b></td>
                         <td style="width:100px;"><b><a href="CancelOrder.aspx?ID=<% Response.Write(reader["ID"].ToString()); %>"><img src="images/product images/Business_E-commerce__Logistics_55-512.png" width=100%/><br />Cancle Order</a></b></td>
                         
                     </tr>
+                    <tr><td colspan="6"  style="text-align:right;"><a target="_blank" style=" margin-right:20px;" href="printBill.aspx?ordID=<% Response.Write(reader["ID"].ToString()); %>">Genrate Invoice</a></td></tr>
                     </table>
                     </div>
                     </div>

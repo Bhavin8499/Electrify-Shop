@@ -53,7 +53,7 @@ public partial class PlaceOrder : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    Date = DateTime.Now.ToShortDateString();
+                    Date = DateTime.Today.ToShortDateString();
                     ProID = reader["ProductID"].ToString();
                     qty = Convert.ToInt32(reader["Qty"].ToString());
 

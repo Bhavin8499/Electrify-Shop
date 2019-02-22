@@ -22,6 +22,22 @@ public partial class Cart : System.Web.UI.Page
         {
             DeleteCartProduct();
         }
+        if (Request.Form["btnUpdateCart"] != null)
+        {
+            UpdateCartProduct();
+        }
+    }
+
+    private void UpdateCartProduct()
+    {
+        String ID = Request.Form["ProductID"].ToString();
+        String Qty = Request.Form["quantity"].ToString();
+        String query = "update Customer_Cart set Qty="+Qty+" where ID=" + ID;
+        con.Open();
+        SqlCommand cmd = new SqlCommand(query, con);
+        cmd.ExecuteNonQuery();
+        Response.Redirect("Cart.aspx");
+        con.Close();
     }
 
     public void DeleteCartProduct()
