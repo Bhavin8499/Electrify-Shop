@@ -25,7 +25,7 @@ Admin | Index
 	<%
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
     con.Open();
-    String query = "select top 9 * from Product Where SellerID = " + Session["SellerID"].ToString()+" order by ID desc";
+    String query = "select * from Product Where SellerID = " + Session["SellerID"].ToString()+" order by ID desc";
     SqlCommand cmd = new SqlCommand(query, con);
     SqlDataReader reader = cmd.ExecuteReader();
     if (reader.HasRows)

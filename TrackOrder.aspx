@@ -98,7 +98,7 @@ Track Order
                         
                             <td align=center colspan=2><div style="margin:10px;" align=center><a href="#"><img src="images/products/<% Response.Write(imgArr[0]); %>" style="width:30%;"/></a></div></td>
                             
-                            <tr><td><h2>Product Name :</h2> </td><td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td></tr>
+                            <tr><td><h2>Product Name :</h2> </td><td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Product Type : <% Response.Write(readerPrdouct["Type"].ToString()); %></span></td></tr>
                             
                             <tr><td><h2>Price :</h2></td><td style="width:100px;"><b>$<% Response.Write(readerPrdouct["Price"].ToString()); %></b></td></tr>
                             

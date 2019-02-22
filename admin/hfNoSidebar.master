@@ -335,7 +335,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="index.aspx">Home
-								<span class="sr-only">(current)</span>
 							</a>
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
@@ -360,26 +359,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<a class="dropdown-item" href="SellerOrders.aspx?pending=YES">Pending Order</a>
 							</div>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Pages
-							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="product.html">Product 1</a>
-								<a class="dropdown-item" href="product2.html">Product 2</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="single.html">Single Product 1</a>
-								<a class="dropdown-item" href="single2.html">Single Product 2</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="checkout.html">Checkout Page</a>
-								<a class="dropdown-item" href="payment.html">Payment Page</a>
-							</div>
+						<li class="nav-item">
+							<a class="nav-link" href="../AboutUs.aspx">About Us</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">About Us</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact Us</a>
+							<a class="nav-link" href="../ContactUs.aspx">Contact Us</a>
 						</li>
 					</ul>
 				</div>
@@ -486,32 +470,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container py-md-5 py-sm-4 py-3">
 				<div class="row footer-info w3-agileits-info">
 					<!-- footer categories -->
-					<div class="col-md-3 col-sm-6 footer-grids">
-						<h3 class="text-white font-weight-bold mb-3">Categories</h3>
-						<ul>
-							<li class="mb-3">
-								<a href="product.aspx?proType=Games">Mobiles </a>
-							</li>
-							<li class="mb-3">
-								<a href="product.aspx?proType=Games">Computers</a>
-							</li>
-							<li class="mb-3">
-								<a href="product.aspx?proType=Games">TV, Audio</a>
-							</li>
-							<li class="mb-3">
-								<a href="product.aspx?proType=Games">Smartphones</a>
-							</li>
-							<li class="mb-3">
-								<a href="product.aspx?proType=Games">Head Phones</a>
-							</li>
-							<li>
-								<a href="product.aspx?proType=Games">Games</a>
-							</li>
-						</ul>
-					</div>
+					
 					<!-- //footer categories -->
 					<!-- quick links -->
-					<div class="col-md-3 col-sm-6 footer-grids mt-sm-0 mt-4">
+					<div class="col-md-4 col-sm-6 footer-grids mt-sm-0 mt-4">
 						<h3 class="text-white font-weight-bold mb-3">Quick Links</h3>
 						<ul>
 							<li class="mb-3">
@@ -519,16 +481,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li class="mb-3">
 								<a href="ContactUs.aspx">Contact Us</a>
-							</li>
-							<li class="mb-3">
-								<a href="terms.html">Terms of use</a>
-							</li>
-							<li>
-								<a href="privacy.html">Privacy Policy</a>
-							</li>							
+							</li>					
 						</ul>
 					</div>
-					<div class="col-md-3 col-sm-6 footer-grids mt-md-0 mt-4">
+					<div class="col-md-4 col-sm-6 footer-grids mt-md-0 mt-4">
 						<h3 class="text-white font-weight-bold mb-3">Get in Touch</h3>
 						<ul>
 							<li class="mb-3">
@@ -547,7 +503,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
+					<div class="col-md-4 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
 						<!-- newsletter -->
 						<h3 class="text-white font-weight-bold mb-3"></h3>
 						<p class="mb-3"></p>
@@ -583,143 +539,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 		<!-- //footer third section -->
-
-		<!-- footer fourth section -->
-		<div class="agile-sometext py-md-5 py-sm-4 py-3">
-			<div class="container">
-				<!-- brands -->
-				<div class="sub-some">
-					<h5 class="font-weight-bold mb-2">Mobile & Tablets :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Android Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Smartphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Feature Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Unboxed Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Refurbished Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2"> Tablets</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">CDMA Phones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Value Added Services</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Sell Old</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Used Mobiles</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Computers :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Laptops </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Printers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Routers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Ink & Toner Cartridges</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Monitors</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Video Games</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Unboxed & Refurbished Laptops</a>
-						</li>
-						<li>
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Assembled Desktops</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Data Cards</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">TV, Audio & Large Appliances :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">TVs & DTH</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Cameras</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Mobile & Laptop Accessories :</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Power Banks </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Pen Drives</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">External Hard Disks</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Mouse</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sub-some mt-4">
-					<h5 class="font-weight-bold mb-2">Popular on Electrify-Shop</h5>
-					<ul>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Headsets</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">LED TV</a>
-						</li>
-					</ul>
-				</div>
-				<!-- //brands -->
-				<!-- payment -->
-				<div class="sub-some child-momu mt-4">
-					<h5 class="font-weight-bold mb-3">Payment Method</h5>
-					<ul>						
-						<li>
-							<img src="images/pay8.png" alt="">
-						</li>
-					</ul>
-				</div>
-				<!-- //payment -->
-			</div>
-		</div>
-		<!-- //footer fourth section (text) -->
-	</footer>
 	<!-- //footer -->
 	<!-- copyright -->
 	<div class="copy-right py-3">
 		<div class="container">
-			<p class="text-center text-white">© 2019 Electrify Shop. All rights reserved | Design by Kishan Jinjariya & Bhavin Sanchaniya (This Is for Only School Project)
+			<p class="text-center text-white">© 2019 Electrify Shop. All rights reserved | Design by Kishan Jinjariya & Bhavin Sanchaniya
 			</p>
 		</div>
 	</div>

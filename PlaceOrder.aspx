@@ -92,7 +92,7 @@ function validate(evt) {
 				<div class="modal-body" style="margin:30px;">
 					<form action="#" method="post">
 						<div class="form-group">
-						    <input type="hidden" name="CusID" value="<% Response.Write(1); %>" />
+						    <input type="hidden" name="CusID" value="<% Response.Write(Session["ID"].ToString()); %>" />
 							<label class="col-form-label">Your Name</label>
 							<input type="text" class="form-control" name="Name" required="">
 						</div>

@@ -283,6 +283,8 @@ About Us | Electrify-shop
 					<div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>					
+                 <div class="display-5" style="text-align:left; padding-left:16%;"><b>Work At</b> : iFlash Developer</div>					
+                 <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Position</b> : iOS Developer Using Objective C</div>					
                 </div><br />
                 <div class="bottom" style="background-color:#38a4ff; padding:4px;">
                     <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/SanchaniyaBhav1">
@@ -299,8 +301,11 @@ About Us | Electrify-shop
                     <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://stackoverflow.com/users/10429259/bhavin-sanchaniya">
                         <i class="fa fa-stack-overflow" style="color:#fe7a15;"></i>
                     </a>
-                    <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://stackoverflow.com/users/10429259/bhavin-sanchaniya">
+                    <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://www.youtube.com/channel/UCM_SL_Dd_I-fo8Yrjaj_thw">
                         <i class="fa fa-youtube-play" style="color:#e52d27;"></i>
+                    </a>                    
+                    <a class="btn btn-sm" rel="publisher" style="background-color:rgb(242, 243, 243);" href="https://github.com/Bhavin8499">
+                        <i class="fa fa-github" style="color:Black;"></i>
                     </a>
                 </div>
             </div>
@@ -323,6 +328,9 @@ About Us | Electrify-shop
                   <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>		
+               <div class="display-5" style="text-align:left; padding-left:16%;"><b>Work At</b> : Speed Computer</div>					
+                 <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Position</b> : Teacher And Designer</div>					
+                
                 </div><br />
                 <div class="bottom" style="background-color:#38a4ff; padding:4px;">
                     <a class="btn btn-danger btn-sm" rel="publisher"

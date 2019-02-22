@@ -763,28 +763,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Laptops </a>
 						</li>
 						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Printers</a>
+							<a href="product.aspx?proType=PC" class="border-right pr-2">Computer</a>
 						</li>
 						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Routers</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Ink & Toner Cartridges</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Monitors</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Video Games</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Unboxed & Refurbished Laptops</a>
-						</li>
-						<li>
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Assembled Desktops</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.aspx?proType=Laptop" class="border-right pr-2">Data Cards</a>
+							<a href="product.aspx?proType=Software" class="border-right pr-2">Video Games</a>
 						</li>
 					</ul>
 				</div>
@@ -792,10 +774,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h5 class="font-weight-bold mb-2">TV, Audio & Large Appliances :</h5>
 					<ul>
 						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">TVs & DTH</a>
+							<a href="product.aspx?proType=Television" class="border-right pr-2">TV</a>
 						</li>
 						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Cameras</a>
+							<a href="product.aspx?proType=Camera" class="border-right pr-2">Cameras</a>
 						</li>
 					</ul>
 				</div>
@@ -803,19 +785,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h5 class="font-weight-bold mb-2">Mobile & Laptop Accessories :</h5>
 					<ul>
 						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
+							<a href="product.aspx?proType=Headphone" class="border-right pr-2">Headphones</a>
 						</li>
 						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Power Banks </a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product.html" class="border-right pr-2">Pen Drives</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">External Hard Disks</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Mouse</a>
+							<a href="product.aspx?proType=Hard Drives" class="border-right pr-2">External Hard Disks</a>
 						</li>
 					</ul>
 				</div>
@@ -823,13 +796,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h5 class="font-weight-bold mb-2">Popular on Electrify-Shop</h5>
 					<ul>
 						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">Headphones</a>
+							<a href="product.aspx?proType=Headphone" class="border-right pr-2">Headphones</a>
 						</li>
 						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2"> Headsets</a>
-						</li>
-						<li class="m-sm-1">
-							<a href="product2.html" class="border-right pr-2">LED TV</a>
+							<a href="product.aspx?proType=Television" class="border-right pr-2">LED TV</a>
 						</li>
 					</ul>
 				</div>
