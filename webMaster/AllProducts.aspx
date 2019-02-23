@@ -35,7 +35,7 @@ Current Avaliable Products
                                                     
                                                     <td style="width:150px;"><b>Price :</b>$<% Response.Write(reader["Price"].ToString()); %><br />_____________<b><br />MRP :</b>$<% Response.Write(reader["MRP"].ToString()); %></td>
                                                     
-                                                    <td><% Response.Write(reader["Description"].ToString()); %></td>
+                                                    <td><% Response.Write(reader["Description"].ToString().Substring(0, 30)); %>.....</td>
                                                     <td style="width:150px;">                                                        
                                                            <Span>Qty : </Span><% Response.Write(reader["Qty"].ToString()); %>
                                                           

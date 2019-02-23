@@ -67,7 +67,7 @@ Profile | Electrify Shop
                     Email = reader["Email"].ToString();
                     Gender = reader["Gender"].ToString();
                     ProfileImage = reader["ProfileImage"].ToString();
-                    Ratings = reader["Ratings"].ToString();
+                    Ratings = String.Empty;
                     imgName = reader["ProfileImage"].ToString();
                 }
             }
@@ -167,14 +167,7 @@ Profile | Electrify Shop
                                             </div>
                                         </div>
                                         <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Rating</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                <% Response.Write(Ratings); %>
-                                            </div>
-                                        </div>
+                                        
                                         <hr />
 
                                     </div>

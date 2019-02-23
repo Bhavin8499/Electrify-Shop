@@ -50,7 +50,7 @@ All Avaliable Sellers List
                                                     <td style="width:150px;">
                                                         <b>Gender :</b> <% Response.Write(reader["Gender"].ToString()); %>
                                                     </td>
-                                                     <td style="width:100px;"><b>Ratings :</b> <% Response.Write(reader["Ratings"].ToString()); %></td>
+                                                     
                                                  </tr>
                                             </table>
                                             </div>

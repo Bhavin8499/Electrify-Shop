@@ -23,8 +23,8 @@ Contact Us | Electrify Shop
 							<i class="fas fa-map-marker-alt rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
-						<p>1PO Box 8568954 Melbourne
-							<label>Australia.</label>
+						<p>Shree Om Collage Of Computer Science
+							<label>Rajkot.</label>
 						</p>
 					</div>
 				</div>
@@ -34,8 +34,8 @@ Contact Us | Electrify Shop
 							<i class="fas fa-phone rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
-						<p>+(0121) 121 121
-							<label>+(0121) 121 122</label>
+						<p>+91 84602 07291
+							<label>+91 99047</label>
 						</p>
 					</div>
 				</div>

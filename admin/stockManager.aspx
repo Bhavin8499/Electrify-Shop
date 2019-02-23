@@ -16,7 +16,8 @@ Stock Manager | Electrify Shop
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
-        String query = "select * from Product where SellerID = 1";
+        String sellerID = Session["SellerID"] != null ? Session["SellerID"].ToString() : "";
+        String query = "select * from Product where SellerID = " + sellerID;
         SqlCommand cmd = new SqlCommand(query, con);
         SqlDataReader reader = cmd.ExecuteReader();
  %>
@@ -51,7 +52,7 @@ Stock Manager | Electrify Shop
                                                     
                                                     <td style="width:150px;"><b>Price :</b>$<% Response.Write(reader["Price"].ToString()); %><br />_____________<b><br />MRP :</b>$<% Response.Write(reader["MRP"].ToString()); %></td>
                                                     
-                                                    <td><% Response.Write(reader["Description"].ToString()); %></td>
+                                                    <td><% String subStr =reader["Description"].ToString().Substring(0, 25); Response.Write(subStr); %>...</td>
                                                     <td style="width:150px;">
                                                         <form id='myform' method='post' action='stockManager.aspx'>
                                                             <input type='number' name='quantity' value="<% Response.Write(reader["Qty"].ToString()); %>" min="0" class='qty' /><br />
