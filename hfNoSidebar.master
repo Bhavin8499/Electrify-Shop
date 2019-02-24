@@ -391,7 +391,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
-						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="index.html">Home
 								<span class="sr-only">(current)</span>
 							</a>
@@ -420,22 +420,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<a href="product.aspx?proType=Mobile Phone">All Mobile Phones</a>
 												</li>
 												<li>
-													<a href="product.aspx?proType=Mobile Phone">Cases & Covers</a>
-												</li>
-												<li>
-													<a href="product.aspx?proType=Mobile Phone">Power Banks</a>
-												</li>
-												<li>
-													<a href="product.aspx?proType=Mobile Phone">All Certified Refurbished</a>
-												</li>
-												<li>
 													<a href="product.aspx?proType=Mobile Phone">Tablets</a>
-												</li>
-												<li>
-													<a href="product.aspx?proType=Mobile Phone">Wearable Devices</a>
-												</li>
-												<li>
-													<a href="product.aspx?proType=Mobile Phone">Smart Home</a>
 												</li>
 											</ul>
 										</div>
@@ -445,13 +430,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													<a href="product.aspx?proType=Laptop">Laptops</a>
 												</li>
 												<li>
-													<a href="product.aspx?proType=Drive">Drives & Storage</a>
+													<a href="product.aspx?proType=Hard Drives">Drives & Storage</a>
 												</li>
 												<li>
-													<a href="product.aspx?proType=ComputerAcc">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="product.aspx?proType=Game">Game Zone</a>
+													<a href="product.aspx?proType=Software">Game Zone</a>
 												</li>
 												<li>
 													<a href="product.aspx?proType=Software">Software</a>

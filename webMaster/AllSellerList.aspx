@@ -8,7 +8,7 @@ All Avaliable Sellers List
 <%
     if (Session["WebID"] == null)
     {
-        Response.Write("<script>alert('Please Login First To See All Product'); window.location='webLogin.aspx';</script>");
+        Response.Write("<script>alert('Please Login First To See All Product'); window.location='../webLogin.aspx';</script>");
     }
     else
     {

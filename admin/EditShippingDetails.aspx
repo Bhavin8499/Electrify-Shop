@@ -8,7 +8,9 @@ Edit Shipping Details | Electrify-Shop
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
     con.Open();
 
-    String query = "select * from CusOrder where ID="+Request.QueryString["ordID"] != null? Request.QueryString["ordID"].ToString() : "0";
+    string ordID = Request.QueryString["ordID"] != null? Request.QueryString["ordID"].ToString() : "0";
+    
+    String query = "select * from CusOrder where ID="+ ordID;
     SqlCommand cmd = new SqlCommand(query,con);
     SqlDataReader reader = cmd.ExecuteReader();
     String ProductName = String.Empty;
@@ -41,7 +43,7 @@ Edit Shipping Details | Electrify-Shop
 				<div class="modal-body" style="margin:30px;">
 					<form action="" method="post" enctype="multipart/form-data">
 						<div class="form-group">
-						<input type="hidden" value="<% Response.Write(Request.QueryString["ID"].ToString()); %>" name="ID" />
+						<input type="hidden" value="<% Response.Write(Request.QueryString["ordID"].ToString()); %>" name="ID" />
 							<label class="col-form-label">Product Name</label>
 							<input type="text" class="form-control" name="product_name" disabled=disabled value="<% Response.Write(ProductName); %>" />
 						</div>
@@ -56,11 +58,11 @@ Edit Shipping Details | Electrify-Shop
   background-color: transparent;
   border: solid 1px gray;
   ">
-							<option>Order Processing</option>
-							<option>Pre-Production</option>
-							<option>In Production</option>
-							<option>Shipped</option>
-							<option>Delivered</option>
+							<option value="Order Processing">Order Processing</option>
+							<option value="Pre-Production">Pre-Production</option>
+							<option value="In Production">In Production</option>
+							<option value="Shipped">Shipped</option>
+							<option value="Delivered">Delivered</option>
 							</select>
 						</div>
 						<div class="form-group">

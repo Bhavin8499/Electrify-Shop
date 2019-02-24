@@ -41,14 +41,25 @@
         }
     }
 
-    query = "select ElectriCash from Customers where ID="+Session["ID"].ToString();
+    query = "select * from Customers where ID="+Session["ID"].ToString();
     cmd = new SqlCommand(query,con);
     reader = cmd.ExecuteReader();
+    String Name = String.Empty;
+    String Email = String.Empty;
+    String MobileNo = String.Empty;
+    String Address = String.Empty;
+    String Pincode = String.Empty;
+       
     if (reader.HasRows)
     {
         while (reader.Read())
         {
             cashAvaliable = Convert.ToInt32(reader["ElectriCash"].ToString());
+            Name = reader["Name"].ToString();
+            Email = reader["Email"].ToString();
+            MobileNo = reader["Mobile"].ToString();
+            Address = reader["Address"].ToString();
+            Pincode = reader["Pincode"].ToString();
         }
     }
     
@@ -94,24 +105,24 @@ function validate(evt) {
 						<div class="form-group">
 						    <input type="hidden" name="CusID" value="<% Response.Write(Session["ID"].ToString()); %>" />
 							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" name="Name" required="">
+							<input type="text" class="form-control" name="Name" required="" value="<% Response.Write(Name); %>" />
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Address</label>
-							<input type="text" class="form-control" name="Address" required="">
+							<input type="text" class="form-control" name="Address" value="<% Response.Write(Address); %>" required="">
 						    
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Pin Code</label>
-							<input type="text" class="form-control" name="Pincode"  maxlength="6" onkeypress='validate(event)'  required="">
+							<input type="text" class="form-control" name="Pincode"  maxlength="6" onkeypress='validate(event)' value="<% Response.Write(Pincode); %>"  required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Mobile Number</label>
-							<input type="text" maxlength="10" onkeypress='validate(event)' class="form-control" name="Mobile" required="">
+							<input type="text" maxlength="10" onkeypress='validate(event)' class="form-control" name="Mobile" required="" value="<% Response.Write(MobileNo); %>">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" name="Email" required="">
+							<input type="email" class="form-control" name="Email" value="<% Response.Write(Email); %>" required="">
 						</div>
 						
 						

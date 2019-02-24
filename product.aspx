@@ -58,7 +58,7 @@ Product | Electrify Shop</asp:Content>
 							<p><% Response.Write(readerBanner["Line1"].ToString()); %></p>
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"><% Response.Write(readerBanner["Line1"].ToString()); %>
 							</h3>
-							<a class="button2" href="product.aspx">Shop Now </a>
+							<a class="button2" href="product.aspx?querySearch=<% Response.Write(readerBanner["Query"].ToString()); %>">Shop Now </a>
 						</div>
 					</div>
 				</div>
@@ -93,7 +93,11 @@ Product | Electrify Shop</asp:Content>
         else if (Request.QueryString["searchQuery"] != null)
         {
             query = "Select * from Product where Name like ('%" + Request.QueryString["searchQuery"] + "%') order by ID desc";
-        }  
+        }
+        else if (Request.QueryString["querySearch"] != null)
+        {
+            query = "Select * from Product where Name like ('%" + Request.QueryString["querySearch"] + "%') OR Type like ('%" + Request.QueryString["querySearch"] + "%') order by ID desc";
+        }
         else
         {
             query = "select * from Product order by ID desc";

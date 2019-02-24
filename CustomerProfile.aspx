@@ -37,7 +37,7 @@ Customer Profile | Electrify-Shop
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
         con.Open();
 
-        String query = "select * from Customers where ID = 1";
+        String query = "select * from Customers where ID = "+Session["ID"];
         SqlCommand cmd = new SqlCommand(query, con);
 
         SqlDataReader reader = cmd.ExecuteReader();
@@ -85,7 +85,7 @@ Customer Profile | Electrify-Shop
                                     <div>
 						                
 						                <div>
-						                    <img src="images/CustomerProfile/<% Response.Write(ProfileImage); %>"  style="margin:5px; height:100px; border-radius:50%;"/>
+						                    <img src="images/CustomerProfile/<% Response.Write(imgName); %>"  style="margin:5px; height:100px; border-radius:50%;"/>
 						                </div>
 						            </div>
                                 </div>                               

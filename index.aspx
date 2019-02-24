@@ -46,7 +46,7 @@ Home | Electrify Shop
 							<p><% Response.Write(readerBanner["Line1"].ToString()); %></p>
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"><% Response.Write(readerBanner["Line1"].ToString()); %>
 							</h3>
-							<a class="button2" href="product.aspx">Shop Now </a>
+							<a class="button2" href="product.aspx?querySearch=<% Response.Write(readerBanner["Query"].ToString()); %>">Shop Now </a>
 						</div>
 					</div>
 				</div>

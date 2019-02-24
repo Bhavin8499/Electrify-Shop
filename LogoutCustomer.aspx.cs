@@ -15,7 +15,14 @@ public partial class LogoutCustomer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session.Clear();
+        Session.Abandon();
         Session.RemoveAll();
+        HttpContext.Current.Response.Cache.SetAllowResponseInBrowserHistory(false);
+        HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        HttpContext.Current.Response.Cache.SetNoStore();
+        Response.Cache.SetExpires(DateTime.Now);
+        Response.Cache.SetValidUntilExpires(true);
         Response.Redirect("index.aspx");
     }
 }

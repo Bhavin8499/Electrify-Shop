@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContentPlaceHolder" Runat="Server">
 <% if (Session["WebID"] == null)
    {
-       Response.Write("<script>alert('Please Login First To Add New Banner'); window.location='webLogin.aspx';</script>");
+       Response.Write("<script>alert('Please Login First To Add New Banner'); window.location='../webLogin.aspx';</script>");
    }
    else
    { %>

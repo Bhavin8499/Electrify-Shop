@@ -280,8 +280,8 @@ About Us | Electrify-shop
                     <div class="title">
                         <a target="_blank" href="https://scripteden.com/">Bhavin Sanchaniya</a>
                     </div><br />
-					<div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
-                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
+					<div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Developer</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 003103162530</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>					
                  <div class="display-5" style="text-align:left; padding-left:16%;"><b>Work At</b> : iFlash Developer</div>					
                  <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Position</b> : iOS Developer Using Objective C</div>					

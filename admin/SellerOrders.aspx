@@ -79,7 +79,6 @@ Orders | Electrify Shop
                                     <div>
 						                
 						                <div>
-						                    <img src="images/user.jpg"  style="margin:5px; height:100px; border-radius:50%;"/>
 						                </div>
 						            </div>
                                 </div>                               
@@ -90,13 +89,13 @@ Orders | Electrify Shop
                             <div class="col-12">
                                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="<% Response.Write(link1); %>" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Curret Order</a>
+                                        <a class="<% Response.Write(link1); %>" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Current Order's</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="<% Response.Write(link2); %>" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Delivared Order</a>
+                                        <a class="<% Response.Write(link2); %>" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Delivered Order's</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="<% Response.Write(link3); %>" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending Order</a>
+                                        <a class="<% Response.Write(link3); %>" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending Order's</a>
                                     </li>
                                 </ul>
                                 
@@ -113,6 +112,10 @@ Orders | Electrify Shop
             String Qty = reader["Qty"].ToString();
             if (reader["Approved"].ToString() == "Approved")
             {
+                if (reader["Status"].ToString() == "Delivered")
+                {
+                    continue;
+                }
                 /* String userName = String.Empty;
                  String userName = String.Empty;
                  String userName = String.Empty;
@@ -136,7 +139,7 @@ Orders | Electrify Shop
                                                     <tr>
                                                         <td><div style="width:150px; margin:10px;"><a href="#"><img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
                                                         
-                                                        <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
+                                                        <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Type : <% Response.Write(readerProduct["Type"].ToString()); %></span></td>
                                                         
                                                         <td style="width:100px;"><b>$<% Response.Write(Price); %> <br /> x &nbsp; <% Response.Write(Qty); %> <br />_____________<br />$<% Response.Write(Total.ToString()); %> </b></td>
                                                         
@@ -233,7 +236,7 @@ Orders | Electrify Shop
                                                 <tr>
                                                     <td><div style="width:150px; margin:10px;"><a href="#"><img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
                                                     
-                                                    <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
+                                                    <td style="width:200px;"><b><% Response.Write(readerProduct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Type : <% Response.Write(readerProduct["Type"].ToString()); %></span></td>
                                                     
                                                     <td style="width:100px;"><b>$<% Response.Write(Price); %> <br /> x &nbsp; <% Response.Write(Qty); %><br />_____________<br />$<% Response.Write(Total.ToString()); %></b></td>
                                                     
@@ -283,7 +286,7 @@ Orders | Electrify Shop
             {
                 if (reader["Approved"].ToString() != "Approved")
                 {
-                    if (reader["Approved"].ToString() != "Disapproved")
+                    if (reader["Approved"].ToString() == "Disapproved")
                     {
                         continue;
                     }
@@ -307,7 +310,7 @@ Orders | Electrify Shop
                         {
                             String[] imgArr = readerProduct["Product_img"].ToString().Split('|');
                                         %>
-                                        <div style="margin: 50px;">
+                                        <div style="margin: 25px;">
                                             <div style="width: 98%; box-shadow: -1px 1px 1px 1px Gray;" class="table-responsive">
                                                 <table class="timetable_sub">
                                                     <tr style="border-bottom: 1px;">
@@ -316,13 +319,13 @@ Orders | Electrify Shop
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div style="width: 150px; margin: 10px;">
+                                                            <div style="width: 100px; margin: 10px;">
                                                                 <a href="#">
                                                                     <img src="../images/products/<% Response.Write(imgArr[0]); %>" style="width: 50%;" /></a></div>
                                                         </td>
                                                         <td style="width: 200px;">
                                                             <b><% Response.Write(readerProduct["Name"].ToString()); %></b><br />
-                                                            <span style="color: Gray; font-size: x-small;">Color : Grey</span>
+                                                            <span style="color: Gray; font-size: x-small;">Type : <% Response.Write(readerProduct["Type"].ToString()); %></span>
                                                         </td>
                                                         <td style="width: 100px;">
                                                             <b>$<% Response.Write(Price); %>

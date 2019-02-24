@@ -281,7 +281,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<img src="images/logo.png" alt="Electrify Shop" style="resize: both;  overflow: auto; margin:10px; max-height:300px; display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;" class="img-fluid">
+  width: 50%;" class="img-fluid" />
 						</a>
 				
 				</div>

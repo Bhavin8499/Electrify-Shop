@@ -43,7 +43,7 @@ function validate(evt) {
 </h3>
             <div>
 				<div class="modal-body" style="margin:30px;">
-					<form action="#" method="post">
+					<form action="#" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="col-form-label">Your Name</label>
 							<input type="text" class="form-control" name="Name" required="">
