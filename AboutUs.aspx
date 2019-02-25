@@ -326,7 +326,7 @@ About Us | Electrify-shop
                         <a target="_blank" href="https://scripteden.com/">Kishan Jinjariya</a>
                     </div><br />
                   <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Project Role</b> : Web Designer</div>
-                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 2121212121</div>
+                    <div class="display-5" style="text-align:left; padding-left:16%;"><b>Enrollment Number</b> : 003103162516</div>
                     <div class="display-5" style="text-align:left; padding-left:16%;"><b>College Name</b> : Shree Om Collage of Computer Science</div>		
                <div class="display-5" style="text-align:left; padding-left:16%;"><b>Work At</b> : Speed Computer</div>					
                  <div class="display-5" style="text-align:left; padding-left:16%;"><b>Current Position</b> : Teacher And Designer</div>					

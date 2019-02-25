@@ -39,9 +39,9 @@ Order | Electrify-Shop
                     <tr>
                         <td><div style="width:150px; margin:10px;"><a href="#"><img src="images/products/<% Response.Write(imgArr[0]); %>" style="width:50%;"/></a></div></td>
                         
-                        <td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Color : Grey</span></td>
+                        <td style="width:200px;"><b><% Response.Write(readerPrdouct["Name"].ToString()); %></b><br /><span style="color:Gray; font-size:x-small;">Type : <% Response.Write(readerPrdouct["Type"].ToString()); %></span></td>
                         
-                        <td style="width:100px;"><b>$<% Response.Write(reader["Price"].ToString()); %></b></td>
+                        <td style="width:100px;"><b>$<% Response.Write(reader["Price"].ToString()); %></b><br />Qty : <% Response.Write(reader["Qty"].ToString()); %></b><br />________________<br />Total : <% int Total = Convert.ToInt32(reader["Price"].ToString()) * Convert.ToInt32(reader["Qty"].ToString()); Response.Write(Total.ToString()); %></td>
                         
                         <td>
                             <span><% Response.Write(reader["Message"].ToString()); %></span><br /><span><b>Status : </b><% Response.Write(reader["Status"].ToString()); %></span></td>
