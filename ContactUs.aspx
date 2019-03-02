@@ -35,7 +35,7 @@ Contact Us | Electrify Shop
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
 						<p>+91 84602 07291
-							<label>+91 99047</label>
+							<label>+91 99047 21012</label>
 						</p>
 					</div>
 				</div>
